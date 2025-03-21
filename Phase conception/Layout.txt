@@ -1,0 +1,29 @@
+portfolio-fullstack/
+│── backend/             # 🚀 Back-end Node.js (API, base de données, etc.)
+│── frontend/            # 🎨 Front-end React
+│   ├── src/
+│   │   ├── assets/      # Images, icônes, logos
+│   │   ├── components/  # Composants réutilisables (Navbar, Footer, Cards, etc.)
+│   │   ├── pages/       # Pages principales
+│   │   │   ├── Home.tsx
+│   │   │   ├── Projects.tsx
+│   │   │   ├── ProjectDetails.tsx
+│   │   │   ├── Skills.tsx
+│   │   │   ├── Timeline.tsx
+│   │   │   ├── Demos.tsx
+│   │   │   ├── Contact.tsx
+│   │   │   ├── NotFound.tsx
+│   │   ├── routes/      # Gestion des routes avec React Router
+│   │   │   ├── Router.tsx
+│   │   ├── styles/      # Fichiers CSS/SCSS globaux ou modulaires
+│   │   │   ├── variables.scss    # Couleurs, polices, thèmes
+│   │   │   ├── global.scss
+│   │   ├── data/        # Fichiers JSON temporaires ou mocks
+│   │   │   ├── projects.ts
+│   │   ├── App.tsx      # Composant principal
+│   │   ├── main.tsx     # Point d'entrée React
+│── .gitignore
+│── package.json         # Dépendances npm
+│── tsconfig.json        # Config TypeScript
+│── vite.config.ts       # Config Vite
+
