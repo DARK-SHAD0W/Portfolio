@@ -1,0 +1,18 @@
+Copyright © 2025 Ahmed Yahya Letaief
+
+🔒 Tous droits réservés.
+
+Ce code est rendu publiquement visible uniquement à des fins de démonstration et d’apprentissage. 
+Aucune partie de ce dépôt ne peut être copiée, reproduite, modifiée ou distribuée sans l’autorisation écrite expresse de l’auteur.
+
+Pour toute demande d’utilisation ou d’autorisation, veuillez contacter : letaiefahmedyahya@gmail.com
+
+---
+
+🔒 All rights reserved.
+
+This code is publicly visible for demonstration and educational purposes only. 
+No part of this repository may be copied, reproduced, modified, or distributed 
+without express written permission from the author.
+
+For inquiries or usage requests, please contact: letaiefahmedyahya@gmail.com
