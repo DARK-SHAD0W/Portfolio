@@ -1,4 +1,6 @@
-//@import "./variables.scss"; // Will define variables later
+@use "./variables";
+@use "./navbar";
+@use "./footer";
 
 * {
   margin: 0;
