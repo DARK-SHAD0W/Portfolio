@@ -1,4 +1,7 @@
-$primary-color: #0c2f52;
-$accent-color: #ff4757;
-$dark-bg: #121212;
-$light-text: #ffffff;
+$primary-color: hsl(210, 49%, 45%);   // Bleu moyen
+$accent-color: hsl(355, 70%, 50%);    // Rouge vibrant
+$dark-bg: hsl(0, 0%,40%);            // Gris sombre
+$light-text: hsl(0, 0%, 0%);         // Blanc cassé
+$body-bg: hsl(0, 0%, 90%);            // Gris très clair
+$secondary-color: hsl(210, 34%, 25%); // Bleu foncé
+$hover-color: hsl(355, 70%, 60%);     // Rouge clair pour le hover

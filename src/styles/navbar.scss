@@ -1,30 +1,135 @@
 @use "./variables";
 
-nav {
-  background: variables.$primary-color;
-  padding: 15px;
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px;
+  gap: 12px;
+}
+
+.icon-box {
+  background: variables.$dark-bg;
+  padding: 8px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+nav {
+  background: variables.$dark-bg;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  flex-grow: 1;
 
   ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
     padding: 0;
     margin: 0;
+    flex-wrap: wrap;
 
     li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+
       a {
         text-decoration: none;
-        color: white;
+        color: variables.$light-text;
         font-size: 18px;
         font-weight: bold;
-        transition: color 0.3s ease-in-out;
+        padding: 10px 20px;
+        background-color: hsl(0, 0%, 40%);
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.3s ease;
 
         &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
           color: variables.$accent-color;
         }
+
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    ul {
+      gap: 15px;
+    }
+
+    li {
+      margin-bottom: 5px;
+
+      a {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+    }
+
+    .icon-box {
+      padding: 6px;
+      margin-right: 5px;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .navbar-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    li {
+      margin-bottom: 8px;
+
+      a {
+        font-size: 14px;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    .icon-box {
+      padding: 5px;
+      margin-right: 0;
+
+      img {
+        width: 28px;
+        height: 28px;
       }
     }
   }
