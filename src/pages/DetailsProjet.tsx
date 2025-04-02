@@ -1,4 +1,4 @@
 export default function DetailsProjet() {
-    return <h1> Details Projet</h1>;
+    return <h1 className="page-title"> Details Projet</h1>;
   }
   

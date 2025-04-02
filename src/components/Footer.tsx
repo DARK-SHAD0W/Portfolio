@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer>
-      <p>&copy; 2025 My Portfolio | All Rights Reserved</p>
+      <p>&copy; 2025 Mon Portfolio | Tous droits réservés</p>
     </footer>
   );
 }

@@ -1,0 +1,132 @@
+@use "./variables";
+
+.competences-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: variables.$body-bg;
+  border-radius: 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    color: variables.$dark-bg;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: variables.$font-stylish;
+  }
+
+  .competence-group {
+    margin: 20px 0;
+
+    h2 {
+      font-size: 2rem;
+      color: variables.$title-color;
+      margin-bottom: 10px;
+      text-align: left;
+      font-family: variables.$font-stylish;
+    }
+  }
+
+  .skills-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    background: variables.$body-bg;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .skills-text {
+      max-width: 70%;
+
+      h3 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        color: variables.$dark-bordeaux;  // Titre en rouge bordeaux foncé
+        font-family: variables.$font-stylish;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: variables.$light-text;  // Noir pour les petits éléments
+        font-family: variables.$font-stylish;
+      }
+    }
+
+    .skills-logo {
+      width: 60px;
+      height: 60px;
+      background: variables.$dark-bg;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+
+      img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .competences-container {
+    padding: 15px;
+  }
+
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .competence-group h2 {
+    font-size: 1.8rem;
+  }
+
+  .skills-section {
+    flex-direction: column;
+    align-items: center;
+
+    .skills-logo {
+      margin-top: 10px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .competences-container {
+    padding: 10px;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .competence-group h2 {
+    font-size: 1.5rem;
+  }
+
+  .skills-section .skills-text h3 {
+    font-size: 1.3rem;
+  }
+
+  .skills-section .skills-text p {
+    font-size: 1rem;
+  }
+}

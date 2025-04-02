@@ -1,4 +1,8 @@
 export default function Projets() {
-    return <h1>Projets </h1>;
-  }
-  
+  return  (
+    <div>
+       <h1 className="page-title">Projets</h1>
+      <p>Explore my projects here.</p>
+    </div>
+  );
+}

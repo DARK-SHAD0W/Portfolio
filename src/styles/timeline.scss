@@ -1,0 +1,98 @@
+@use "./variables";
+
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 10%; /* Décalage à gauche */
+}
+
+.vertical-line {
+  position: absolute;
+  left: 15%;
+  width: 4px;
+  background: variables.$dark-bg;
+  height: 100%;
+  transition: background 0.3s ease;
+}
+
+.dotted-line {
+  position: absolute;
+  left: 15%;
+  width: 4px;
+  height: 30px;
+  background: repeating-linear-gradient(
+    to bottom,
+    variables.$accent-color,
+    variables.$accent-color 5px,
+    transparent 5px,
+    transparent 10px
+  );
+  bottom: 0;
+}
+
+.timeline-element {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  position: relative;
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    opacity: 1;
+
+    .vertical-line {
+      background: variables.$accent-color;
+    }
+  }
+
+  .year {
+    position: absolute;
+    left: -80px;
+    color: variables.$dark-bordeaux;
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+
+  .logo-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: variables.$dark-bg;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .content-box {
+    margin-left: 30px;
+    background: variables.$body-bg;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+
+    h3 {
+      font-size: 1.3rem;
+      color: variables.$dark-bordeaux;
+    }
+
+    p {
+      font-size: 1rem;
+      color: variables.$light-text;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+    }
+  }
+}

@@ -1,4 +1,4 @@
 export default function Demos() {
-    return <h1> Demos </h1>;
+    return <h1 className="page-title"> Demos </h1>;
   }
   

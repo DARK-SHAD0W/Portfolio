@@ -13,12 +13,24 @@ export default function AppRouter() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Projets" element={<Projets />} />
-      <Route path="/Projets/:id" element={<DetailsProjet />} />
       <Route path="/Competences" element={<Competences />} />
       <Route path="/Timeline" element={<Timeline />} />
       <Route path="/Demos" element={<Demos />} />
       <Route path="/Contact" element={<Contact />} />
+
+      {/* Catch-all for any invalid sub-route under other main paths */}
+      <Route path="/Projets/*" element={<NotFound />} />
+      <Route path="/Competences/*" element={<NotFound />} />
+      <Route path="/Timeline/*" element={<NotFound />} />
+      <Route path="/Demos/*" element={<NotFound />} />
+      <Route path="/Contact/*" element={<NotFound />} />
+      
+      {/* Global catch-all for any undefined route */}
       <Route path="*" element={<NotFound />} />
+
+      {/* taw ba3d  nthabet */}
+      <Route path="/DetailsProjet/" element={<DetailsProjet />} />
+      <Route path="/DetailsProjet/*" element={<NotFound />} />
     </Routes>
   );
 }
