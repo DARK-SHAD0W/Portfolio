@@ -1,4 +1,4 @@
 export default function Timeline() {
-    return <h1> Timeline Page</h1>;
+    return <h1> Timeline </h1>;
   }
   

@@ -1,8 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home";
-import Projects from "../pages/Projects";
-import ProjectDetails from "../pages/ProjectDetails";
-import Skills from "../pages/Skills";
+import Projets from "../pages/Projets";
+import DetailsProjet from "../pages/DetailsProjet";
+import Competences from "../pages/Competences";
 import Timeline from "../pages/Timeline";
 import Demos from "../pages/Demos";
 import Contact from "../pages/Contact";
@@ -12,12 +12,12 @@ export default function AppRouter() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/projects/:id" element={<ProjectDetails />} />
-      <Route path="/skills" element={<Skills />} />
-      <Route path="/timeline" element={<Timeline />} />
-      <Route path="/demos" element={<Demos />} />
-      <Route path="/contact" element={<Contact />} />
+      <Route path="/Projets" element={<Projets />} />
+      <Route path="/Projets/:id" element={<DetailsProjet />} />
+      <Route path="/Competences" element={<Competences />} />
+      <Route path="/Timeline" element={<Timeline />} />
+      <Route path="/Demos" element={<Demos />} />
+      <Route path="/Contact" element={<Contact />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
