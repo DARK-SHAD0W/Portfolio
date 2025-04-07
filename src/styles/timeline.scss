@@ -4,7 +4,19 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  margin-left:5%;
+  margin-left: 5%;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .vertical-line {
@@ -12,14 +24,26 @@
   left: 7%;
   width: 4px;
   background: variables.$dark-bg;
-  height: 90%;
-  margin-left:5%;
+  height: 97%;
+  margin-left: 5%;
+  margin-top: -7%;
+  transition: background-color 0.3s ease;
+  animation: growLine 2s ease forwards;
+}
+
+@keyframes growLine {
+  from {
+    height: 0;
+  }
+  to {
+    height: 97%;
+  }
 }
 
 .vertical-line.dotted {
   position: absolute;
   width: 4px;
-  height: 10%;
+  height: 15%;
   background: repeating-linear-gradient(
     to bottom,
     variables.$dark-bg,
@@ -28,7 +52,17 @@
     transparent 10px
   );
   top: 90%;
-  margin-left:5%;
+  margin-left: 5%;
+  animation: scrollDots 5s linear infinite;
+}
+
+@keyframes scrollDots {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 20px;
+  }
 }
 
 .timeline-element {
@@ -36,36 +70,182 @@
   align-items: center;
   margin: 20px 0;
   position: relative;
+  opacity: 0.7;
+  transform: scale(0.95) translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: appearElement 0.6s ease forwards;
+}
+
+@keyframes appearElement {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.timeline-element:hover,
+.timeline-element:hover ~ .timeline-element {
+  transform: scale(1.08);
+  z-index: 2;
 }
 
 .timeline-date {
   position: absolute;
-  left:-2%;
+  left: -5%;
   font-weight: bold;
   color: variables.$dark-bg;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  width: 150px;
+  margin-right: 20px;
+  text-align: right;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.timeline-element:hover .timeline-date {
+  color: variables.$secondary-color;
+  transform: scale(1.25);
 }
 
 .timeline-point {
   position: absolute;
-  margin-left:11.5%;
-  width: 16px;
-  height: 16px;
-  background-color: variables.$dark-bg;
+  margin-left: 12%;
+  width: 60px;
+  height: 60px;
+  background-color: variables.$body-bg;
+  border-color: variables.$dark-bg;
+  border: 4px solid variables.$dark-bg;
   border-radius: 50%;
-  opacity: 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+}
+
+.timeline-element:hover .timeline-point {
+  transform: scale(1.3) rotate(15deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  margin-left: 10%;
+  border-width: 8px;
 }
 
 .timeline-point.active {
   opacity: 1;
-  transform: scale(3.5);
+  transform: scale(1.6);
+  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
 }
 
-.timeline-description {
+.timeline-description-container {
   margin-left: 25%;
-  padding: 10px 20px;
+  perspective: 1000px;
+}
+
+/* Nouvel effet sur le titre */
+.timeline-description h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: variables.$dark-bordeaux;
+  transform: translateY(10px);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.timeline-description:hover h3 {
+  transform: translateY(0);
+  color: variables.$accent-color;
+}
+
+/* Nouvel effet sur la description */
+.timeline-description, .timeline-detail {
+  padding: 15px 25px;
   background: variables.$body-bg;
+  border-radius: 12px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.timeline-description:hover{
+  animation: float 1.2s ease-in-out infinite alternate;
+  box-shadow: 0 8px 14px rgba(255, 0, 0, 0.4);
+}
+
+.timeline-detail:hover {
+  animation: float 1.2s ease-in-out infinite alternate;
+  box-shadow: 0 8px 14px rgba(0, 0, 255, 0.40);
+}
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-5px);
+  }
+}
+
+.timeline-detail {
+  margin-left: 2%;
+  padding: 12px 22px;
+  font-weight: bold;
+  color: variables.$light-text;
+}
+
+.timeline-description, .timeline-detail {
+  min-width: 400px;
+  max-width: 400px;
+  margin-bottom: 12px;
+  animation: fadeInText 0.8s ease forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Pop-up d'information détaillée */
+.timeline-detail:hover .extra-info {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.extra-info {
+  display: none;
+  opacity: 0;
+  margin-top: 5px;
+  max-height: 0;
+  overflow: hidden;
+  padding: 8px 15px;
+  background: variables.$body-bg;
+  color: variables.$light-text;
+  font-size: 0.9rem;
+  font-style: italic;
+  font-family: "Trebuchet MS", Courier, monospace;
   border-radius: 8px;
+  transition: opacity 0.6s ease, max-height 0.6s ease;
+  transform: translateY(-10px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-detail:hover .extra-info {
+  opacity: 1;
+  max-height: 200px; /* Adjust as needed */
 }
