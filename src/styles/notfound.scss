@@ -1,0 +1,189 @@
+@use "./variables";
+
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px);
+  background: variables.$body-bg;
+  animation: fadeIn 1.2s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  /* Triangle non rempli avec point d'exclamation */
+  .not-found-triangle {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 150px solid variables.$dark-bg;
+    position: relative;
+    margin: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+    }
+
+    .exclamation {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      font-weight: bold;
+      color: variables.$light-text;
+    }
+  }
+
+  /* Chiffres 404 avec effet 3D */
+  .not-found-numbers {
+    display: flex;
+    gap: 20px;
+
+    .number {
+      font-size: 120px;
+      font-weight: bold;
+      background: variables.$dark-bg;
+      color: variables.$light-text;
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.1);
+      }
+    }
+
+    .number4:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 255, 0.6); /* Bleu */
+    }
+
+    .number0:hover {
+      box-shadow: 0 8px 16px rgba(0, 255, 0, 0.6); /* Vert */
+    }
+
+    .number4:nth-child(3):hover {
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.6); /* Rouge */
+    }
+  }
+
+  /* Message et bouton retour */
+  .message {
+    text-align: center;
+    margin-top: 20px;
+
+    h1 {
+      font-size: 2.5rem;
+      color: variables.$dark-bg;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: variables.$light-text;
+      margin-bottom: 15px;
+    }
+
+    .bouton3D {
+      height: 5rem;
+      width: 7rem;
+      background-color: variables.$dark-bg;
+      color: variables.$light-text;
+      border-radius: 15rem;
+      padding: 0.6rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      transition: 0.5s;
+      box-shadow: 0 0.5rem 0 hsl(0, 0%, 64%);
+      margin: 0.33rem;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+
+      &:active {
+        box-shadow: none;
+        transform: translateY(0.5rem);
+      }
+
+      &:hover {
+        background-color:  hsl(0, 0%, 30%); ;
+        color: variables.$body-bg;
+        box-shadow: 0 0.5rem 0 variables.$dark-bg;
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .not-found-triangle {
+    border-left: 70px solid transparent;
+    border-right: 70px solid transparent;
+    border-bottom: 100px solid variables.$dark-bg;
+
+    .exclamation {
+      font-size: 40px;
+    }
+  }
+
+  .not-found-numbers .number {
+    font-size: 80px;
+    padding: 15px;
+  }
+
+  .message h1 {
+    font-size: 2rem;
+  }
+
+  .message p, .message .bouton3D {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .not-found-triangle {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 80px solid variables.$dark-bg;
+
+    .exclamation {
+      font-size: 30px;
+    }
+  }
+
+  .not-found-numbers .number {
+    font-size: 60px;
+    padding: 10px;
+  }
+
+  .message h1 {
+    font-size: 1.8rem;
+  }
+
+  .message p, .message .bouton3D {
+    font-size: 0.9rem;
+  }
+}
