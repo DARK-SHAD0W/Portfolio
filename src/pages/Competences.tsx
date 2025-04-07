@@ -15,7 +15,7 @@ export default function Competences() {
             <p>JavaScript, TypeScript, Python, C, C#, Java, Assembly (asm), Prolog, Julia</p>   
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C1.png" alt="Code" />
+            <img src="/src/assets/images-competences/C1.png" alt="Code" />
           </div>
         </div>
         <div className="skills-section">
@@ -24,7 +24,7 @@ export default function Competences() {
             <p>HTML, CSS, SCSS, Markdown</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C2.png" alt="HTML/CSS" />
+            <img src="/src/assets/images-competences/C2.png" alt="HTML/CSS" />
           </div>
         </div>
         <div className="skills-section">
@@ -33,7 +33,7 @@ export default function Competences() {
             <p>React.js, Node.js, Express.js, Vite, React Router DOM</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C3.png"  alt="Frameworks" />
+            <img src="/src/assets/images-competences/C3.png"  alt="Frameworks" />
           </div>
         </div>
         <div className="skills-section">
@@ -42,7 +42,7 @@ export default function Competences() {
             <p> VS Code, Git, GitHub, Unity, Processing ,PowerBi</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C4.png" alt="Dev Tools" />
+            <img src="/src/assets/images-competences/C4.png" alt="Dev Tools" />
           </div>
         </div>
       </div>
@@ -56,7 +56,7 @@ export default function Competences() {
             <p>MongoDB, SQL Server, PostgreSQL, Oracle</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C5.png" alt="Database" />
+            <img src="/src/assets/images-competences/C5.png" alt="Database" />
           </div>
         </div>
       </div>
@@ -70,7 +70,7 @@ export default function Competences() {
             <p>React.js, HTML, CSS, SCSS, JavaScript, TypeScript</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C6.png" alt="Frontend" />
+            <img src="/src/assets/images-competences/C6.png" alt="Frontend" />
           </div>
         </div>
         <div className="skills-section">
@@ -79,7 +79,7 @@ export default function Competences() {
             <p>Node.js, Express.js, API REST</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/Photos-Competences/C7.png" alt="Backend" />
+            <img src="/src/assets/images-competences/C7.png" alt="Backend" />
           </div>
         </div>
       </div>

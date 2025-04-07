@@ -6,16 +6,16 @@ export default function Navbar() {
 
   // Mapping des icônes en fonction de la page
   const iconMap: { [key: string]: string } = {
-    "/": "/src/assets/icons/home-icon.png",
-    "/Projets": "/src/assets/icons/projets-icon.png",
-    "/Competences": "/src/assets/icons/skills-icon.png",
-    "/Timeline": "/src/assets/icons/timeline-icon.png",
-    "/Demos": "/src/assets/icons/demos-icon.png",
-    "/Contact": "/src/assets/icons/contact-icon.png",
+    "/": "/src/assets/navbar-icons/home-icon.png",
+    "/Projets": "/src/assets/navbar-icons/projets-icon.png",
+    "/Competences": "/src/assets/navbar-icons/skills-icon.png",
+    "/Timeline": "/src/assets/navbar-icons/timeline-icon.png",
+    "/Demos": "/src/assets/navbar-icons/demos-icon.png",
+    "/Contact": "/src/assets/navbar-icons/contact-icon.png",
   };
 
   // Vérifier si le chemin existe dans le mapping
-  const currentIcon = iconMap[location.pathname] || "/src/assets/icons/error-404-icon.png";
+  const currentIcon = iconMap[location.pathname] || "/src/assets/navbar-icons/error-404-icon.png";
 
   return (
     <div className="navbar-wrapper">

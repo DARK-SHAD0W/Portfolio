@@ -13,7 +13,7 @@ const timelineData = [
   { year: "2023", title: "Flow Leader RGIS", description: "Chef d'équipe", details: "Gestion d'équipe et optimisation des inventaires chez RGIS.", logo: "RGIS.png" },
   { year: "2024", title: "Stage KAUST", description: "Calcul haute performance", details: "Stage en intelligence artificielle et calcul scientifique à KAUST.", logo: "Kaust.png" },
   { year: "2025", title: "Licence obtenue", description: "Diplôme en Informatique", details: "Obtention de la Licence en Informatique à l'UCA.", logo: "graduation.png" },
-  { year: "Future", title: "Vers l'avenir", description: "Perspectives d'évolution", details: "Objectif : Poursuivre dans le domaine de l'architecture logicielle.", logo: "future.png" },
+  { year: "Futur", title: "Vers l'avenir", description: "Perspectives d'évolution", details: "Objectif : Poursuivre dans le domaine de l'architecture logicielle.", logo: "future.png" },
 ];
 
 export default function Timeline() {
@@ -34,7 +34,7 @@ export default function Timeline() {
           >
             <div className="timeline-date">{item.year}</div>
             <div className={`timeline-point ${hovered === index ? "active" : ""}`}>
-              <img src={`/src/assets/logos/${item.logo}`} alt={item.title} />
+              <img src={`/src/assets/timeline-logos/${item.logo}`} alt={item.title} />
             </div>
             <div className="timeline-description-container">
               <div className="timeline-description">
