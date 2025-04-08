@@ -1,0 +1,75 @@
+@use "./variables";
+
+.projets-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+
+  .page-title {
+    font-size: 2.5rem;
+    color: variables.$dark-bg;
+    margin-bottom: 30px;
+    font-family: variables.$font-stylish;
+  }
+
+  .project-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Par défaut : 3 colonnes */
+    gap: 20px;
+    justify-items: center;
+    align-items: stretch;
+    margin-left: -3%;
+
+    animation: fadeIn 1.2s ease-in-out;
+  
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+  }
+
+  /* Pour les écrans moyens (tablettes) */
+  @media (max-width: 992px) {
+    .project-list {
+      grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+      gap: 20px;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+    }
+  }
+
+  /* Pour les petits écrans (mobiles) */
+  @media (max-width: 768px) {
+    .project-list {
+      grid-template-columns: repeat(1, 1fr); /* 1 colonne */
+      gap: 15px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+  }
+
+  /* Pour les très petits écrans (smartphones) */
+  @media (max-width: 480px) {
+    .project-list {
+      grid-template-columns: repeat(1, 1fr); /* Toujours 1 colonne */
+      gap: 10px;
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+    }
+  }
+}

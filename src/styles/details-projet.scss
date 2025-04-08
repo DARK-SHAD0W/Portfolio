@@ -1,0 +1,125 @@
+@use "./variables";
+
+.details-container {
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  background: variables.$body-bg;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  animation: fadeIn 0.8s ease forwards;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.6);
+  }
+
+  .header {
+    display: flex;
+    justify-content: center; /* Centrer le titre du projet */
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 10px;
+     /* Espace entre le bouton retour et le titre */
+
+    h1 {
+      font-size: 2.5rem;
+      color: variables.$dark-bg;
+      margin: 0;
+      text-align: center; /* Assurer l'alignement centré */
+      flex: 1;
+    }
+
+    .back-button {
+      text-decoration: none;
+
+      .back-circle {
+        width: 50px;
+        height: 50px;
+        background: variables.$dark-bg;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        &:hover {
+          transform: translateY(-5px) scale(1.1);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.8);
+        }
+
+        .back-icon {
+          width: 60%;
+          height: 60%;
+        }
+      }
+    }
+  }
+
+  .github-circle-link {
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px auto;
+  }
+
+  .github-circle {
+    width: 80px;
+    height: 80px;
+    background: variables.$dark-bg;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 10px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .github-icon {
+      width: 50%;
+      height: 50%;
+      &:hover {
+        transform: scale(1.6);
+      }
+    }
+  }
+
+  .description {
+    font-size: 1.4rem;
+    color: variables.$light-text;
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .github-circle {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .github-circle {
+    width: 60px;
+    height: 60px;
+  }
+}

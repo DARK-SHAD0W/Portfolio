@@ -10,7 +10,7 @@ portfolio-fullstack/
 │   │   │   ├── ProjectDetails.tsx
 │   │   │   ├── Competences.tsx
 │   │   │   ├── Timeline.tsx
-│   │   │   ├── Demos.tsx
+│   │   │   ├── Demos.tsx ( celle la a eté supprimée)
 │   │   │   ├── Contact.tsx
 │   │   │   ├── NotFound.tsx
 │   │   ├── routes/      # Gestion des routes avec React Router
@@ -18,6 +18,7 @@ portfolio-fullstack/
 │   │   ├── styles/      # Fichiers CSS/SCSS globaux ou modulaires
 │   │   │   ├── variables.scss    # Couleurs, polices, thèmes
 │   │   │   ├── global.scss
+│   │   │   ├── tous les autres.scss
 │   │   ├── data/        # Fichiers JSON temporaires ou mocks
 │   │   │   ├── projects.ts
 │   │   ├── App.tsx      # Composant principal
