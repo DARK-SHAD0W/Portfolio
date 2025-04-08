@@ -7,7 +7,6 @@
   margin: 20px auto;
 
   .logo-container {
-    padding: auto;
     width: 100px;
     height: 100px;
     background: variables.$body-bg;
@@ -20,14 +19,69 @@
 
     &:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 16px variables.$accent-color;
     }
 
     img {
       width: 50%;
       height: 50%;
-      border-radius: 50%;
-      size-adjust:inherit;
+    }
+  }
+
+  /* Couleurs spécifiques pour chaque logo */
+  .gmail {
+    &:hover {
+      box-shadow: 0 8px 16px #D14836;
+    }
+  }
+
+  .linkedin {
+    &:hover {
+      box-shadow: 0 8px 16px #0077B5;
+    }
+  }
+
+  .phone {
+    &:hover {
+      box-shadow: 0 8px 16px #34A853;
+    }
+  }
+
+  .instagram {
+    &:hover {
+      box-shadow: 0 8px 16px #E1306C;
+    }
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-logos {
+    gap: 20px;
+  }
+
+  .logo-container {
+    width: 80px;
+    height: 80px;
+
+    img {
+      width: 45%;
+      height: 45%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-logos {
+    gap: 15px;
+  }
+
+  .logo-container {
+    width: 60px;
+    height: 60px;
+
+    img {
+      width: 40%;
+      height: 40%;
     }
   }
 }

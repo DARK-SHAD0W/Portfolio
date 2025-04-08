@@ -9,11 +9,11 @@ const timelineData = [
   { year: "2020", title: "Bac Tunisien Maths", description: "Obtention du Baccalauréat", details: "Baccalauréat en Mathématiques obtenu au Lycée Mornag, Tunisie.", logo: "BacTn.png" },
   { year: "2020", title: "Bac Français Scientifique", description: "Obtention du Baccalauréat", details: "Baccalauréat Scientifique obtenu au Lycée René Descartes, Tunisie.", logo: "BacFr.png" },
   { year: "2021", title: "Licence Informatique", description: "Début à l'UCA", details: "Début des études en informatique à l'Université Clermont Auvergne, France.", logo: "Uca.png" },
-  { year: "2021", title: "Auditeur RGIS", description: "Inventaires externalisés", details: "Auditeur chez RGIS, inventaires dans diverses entreprises de Clermont-Ferrand.", logo: "RGIS.png" },
+  { year: "2021", title: "Auditeur RGIS", description: "Inventaires externalisés", details: "Auditeur chez RGIS, inventaires dans diverses enseignes d'Auvergne'.", logo: "RGIS.png" },
   { year: "2023", title: "Flow Leader RGIS", description: "Chef d'équipe", details: "Gestion d'équipe et optimisation des inventaires chez RGIS.", logo: "RGIS.png" },
   { year: "2024", title: "Stage KAUST", description: "Calcul haute performance", details: "Stage en intelligence artificielle et calcul scientifique à KAUST.", logo: "Kaust.png" },
   { year: "2025", title: "Licence obtenue", description: "Diplôme en Informatique", details: "Obtention de la Licence en Informatique à l'UCA.", logo: "graduation.png" },
-  { year: "Futur", title: "Vers l'avenir", description: "Perspectives d'évolution", details: "Objectif : Poursuivre dans le domaine de l'architecture logicielle.", logo: "future.png" },
+  { year: "Futur", title: "Vers l'avenir", description: "Perspectives d'évolution", details: "Objectif : Poursuivre dans le domaine du developpement logiciel.", logo: "future.png" },
 ];
 
 export default function Timeline() {
