@@ -108,6 +108,8 @@
   margin-right: 20px;
   text-align: right;
   transition: color 0.4s ease, transform 0.4s ease;
+  animation: fadeInText 0.4s ease forwards;
+  animation-delay: 0.1s;
 }
 
 .timeline-element:hover .timeline-date {
@@ -131,6 +133,8 @@
   overflow: hidden;
   transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 4px 8px variables.$secondary-color;
+  animation: fadeInText 0.4s ease forwards;
+  animation-delay: 0.2s;
 
   img {
     width: 50px;
@@ -183,6 +187,16 @@
   margin-bottom: 12px;
 }
 
+.timeline-description:hover {
+  animation: float 1.8s ease-in-out infinite alternate;
+  box-shadow: 0 8px 14px rgba(255, 0, 0, 0.4);
+}
+
+.timeline-detail:hover {
+  animation: float 1.8s ease-in-out infinite alternate;
+  box-shadow: 0 8px 14px rgba(0, 0, 255, 0.4);
+}
+
 @keyframes float {
   from {
     transform: translateY(0);
@@ -205,6 +219,7 @@
   min-width: 400px;
   max-width: 400px;
   margin-bottom: 12px;
+  animation: fadeInText 0.8s ease forwards;
 }
 
 @keyframes fadeInText {
@@ -240,9 +255,11 @@
   max-height: 200px;
 }
 
+
 /* Responsive Styling for Smaller Screens */
 @media (max-width: 768px) {
   .timeline-element {
+    gap: 	40px;
     flex-direction: column;
     align-items: flex-start;
   }
@@ -260,11 +277,16 @@
   }
 
   .timeline-point {
-    margin-left: 0;
+    margin-left: 25%;
     margin-bottom: 10px;
   }
 
+  .timeline-element:hover .timeline-point {
+    margin-left: 18%;
+  }
+  
+
   .vertical-line, .vertical-line.dotted {
-    left: 3%;
+    left: 20%;
   }
 }
