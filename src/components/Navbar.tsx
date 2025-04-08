@@ -10,7 +10,6 @@ export default function Navbar() {
     "/Projets": "/src/assets/navbar-icons/projets-icon.png",
     "/Competences": "/src/assets/navbar-icons/skills-icon.png",
     "/Timeline": "/src/assets/navbar-icons/timeline-icon.png",
-    "/Demos": "/src/assets/navbar-icons/demos-icon.png",
     "/Contact": "/src/assets/navbar-icons/contact-icon.png",
   };
 
@@ -28,7 +27,6 @@ export default function Navbar() {
           <li><Link to="/Competences">Competences</Link></li>
           <li><Link to="/Timeline">Timeline</Link></li>
           <li><Link to="/Projets">Projets</Link></li>
-          <li><Link to="/Demos">Demos</Link></li>
           <li><Link to="/Contact">Contact</Link></li>
         </ul>
       </nav>

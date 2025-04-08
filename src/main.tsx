@@ -6,7 +6,7 @@ import "./styles/global.scss";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>  {/* ✅ This should only appear here */}
+    <BrowserRouter> 
       <App />
     </BrowserRouter>
   </StrictMode>
