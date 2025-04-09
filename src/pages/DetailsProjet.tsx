@@ -1,11 +1,9 @@
-import React from "react";
 import { useParams, Link } from "react-router-dom";
 import "../styles/details-projet.scss";
 import { projectsData, ProjectDetailsProps } from "../data/projectsData";
 
 export default function DetailsProjet() {
   const { projectId } = useParams<{ projectId: string }>();
-
   const project: ProjectDetailsProps | undefined = projectsData.find(
     (proj) => proj.id === projectId
   );
@@ -31,15 +29,35 @@ export default function DetailsProjet() {
           </div>
         </Link>
       </div>
+
       <div className="image-container">
         <img src={project.imageUrl} alt={project.title} />
       </div>
-      <p className="description">{project.description}</p>
+
+    
 
       <div className="project-info">
         <p><b>Date de création :</b> {project.date}</p>
         <p><b>Difficulté :</b> {project.difficulty}</p>
       </div>
+
+
+      <div className="description">
+        <h3>Description :</h3>
+        <p>{project.description}</p>
+      </div>
+      
+      {/* Galerie d'images */}
+      {project.gallery && (
+        <div className="gallery">
+          <h3>Galerie d’images :</h3>
+          <div className="gallery-grid">
+            {project.gallery.map((img, index) => (
+              <img key={index} src={img} alt={`Step ${index + 1}`} />
+            ))}
+          </div>
+        </div>
+      )}
 
       <div className="tech-badges">
         {project.technologies.map((tech, index) => (
@@ -49,14 +67,31 @@ export default function DetailsProjet() {
         ))}
       </div>
 
-      <div className="features">
-        <h3>Fonctionnalités :</h3>
-        <ul>
-          {project.features.map((feature, index) => (
-            <li key={index}>{feature}</li>
-          ))}
-        </ul>
-      </div>
+      {/* Stack technique animé */}
+      {project.techDetails && (
+        <div className="stack-animated">
+          <h3>Stack technique :</h3>
+          <div className="stack-grid">
+            {project.techDetails.map((tech, index) => (
+              <div key={index} className="flip-card">
+                <div className="flip-inner">
+                  <div className="flip-front">{tech.name}</div>
+                  <div className="flip-back">{tech.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Ce que j’ai appris */}
+      {project.learnings && (
+        <div className="learnings">
+          <h3>Ce que j’ai appris :</h3>
+          <p>{project.learnings}</p>
+        </div>
+      )}
+
 
       {project.contributors && (
         <div className="contributors">
@@ -70,7 +105,12 @@ export default function DetailsProjet() {
       )}
 
       {project.githubLink && (
-        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="github-circle-link">
+        <a
+          href={project.githubLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="github-circle-link"
+        >
           <div className="github-circle">
             <img src="/src/assets/github.png" alt="GitHub" className="github-icon" />
           </div>

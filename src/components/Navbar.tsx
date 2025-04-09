@@ -3,23 +3,25 @@ import "../styles/navbar.scss";
 
 export default function Navbar() {
   const location = useLocation();
+  const normalizedPath = location.pathname.toLowerCase();
 
-  // Mapping des icônes en fonction de la page
+  // Mapping des icônes en minuscules
   const iconMap: { [key: string]: string } = {
     "/": "/src/assets/navbar-icons/home-icon.png",
-    "/Projets": "/src/assets/navbar-icons/projets-icon.png",
-    "/Competences": "/src/assets/navbar-icons/skills-icon.png",
-    "/Timeline": "/src/assets/navbar-icons/timeline-icon.png",
-    "/Contact": "/src/assets/navbar-icons/contact-icon.png",
+    "/projets": "/src/assets/navbar-icons/projets-icon.png",
+    "/competences": "/src/assets/navbar-icons/skills-icon.png",
+    "/timeline": "/src/assets/navbar-icons/timeline-icon.png",
+    "/contact": "/src/assets/navbar-icons/contact-icon.png",
     "/details": "/src/assets/navbar-icons/details-icon.png",
   };
 
-  // Vérifier si le chemin existe dans le mapping ou s'il commence par /details
-  let currentIcon = iconMap[location.pathname] || "/src/assets/navbar-icons/error-404-icon.png";
+  // Vérifie les chemins dynamiques (startsWith pour /details)
+  let currentIcon = "/src/assets/navbar-icons/error-404-icon.png";
 
-  // Vérification spécifique pour la page de détails
-  if (location.pathname.startsWith("/details")) {
+  if (normalizedPath.startsWith("/details")) {
     currentIcon = iconMap["/details"];
+  } else if (iconMap[normalizedPath]) {
+    currentIcon = iconMap[normalizedPath];
   }
 
   return (
@@ -30,12 +32,12 @@ export default function Navbar() {
       <nav className="navbar">
         <ul>
           <li><Link to="/">Home</Link></li>
-        <li><Link to="/Competences">Competences</Link></li>
-        <li><Link to="/Timeline">Timeline</Link></li>
-        <li><Link to="/Projets">Projets</Link></li>
-        <li><Link to="/Contact">Contact</Link></li>
+          <li><Link to="/Competences">Competences</Link></li>
+          <li><Link to="/Timeline">Timeline</Link></li>
+          <li><Link to="/Projets">Projets</Link></li>
+          <li><Link to="/Contact">Contact</Link></li>
         </ul>
       </nav>
     </div>
-  ); 
+  );
 }

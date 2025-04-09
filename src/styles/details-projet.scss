@@ -21,15 +21,14 @@
     justify-content: center; /* Centrer le titre du projet */
     align-items: center;
     margin-bottom: 20px;
-    margin-left: 10px;
-     /* Espace entre le bouton retour et le titre */
 
     h1 {
       font-size: 2.5rem;
       color: variables.$dark-bg;
       margin: 0;
-      text-align: center; /* Assurer l'alignement centré */
+      text-align: center;
       flex: 1;
+      animation: popIn 0.6s ease forwards;
     }
 
     .back-button {
@@ -59,42 +58,147 @@
     }
   }
 
-  .github-circle-link {
-    text-decoration: none;
-    display: inline-block;
-    margin: 20px auto;
-  }
+  .image-container {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 15px;
+    animation: slideIn 0.8s ease forwards;
 
-  .github-circle {
-    width: 80px;
-    height: 80px;
-    background: variables.$dark-bg;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
 
-    &:hover {
-      transform: translateY(-5px) scale(1.1);
-      box-shadow: 0 10px 16px rgba(0, 0, 0, 0.8);
-    }
-
-    .github-icon {
-      width: 50%;
-      height: 50%;
       &:hover {
-        transform: scale(1.6);
+        transform: scale(1.05);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
       }
     }
   }
 
   .description {
     font-size: 1.4rem;
-    color: variables.$light-text;
     margin: 20px 0;
-    line-height: 1.6;
+    text-align: left;
+    animation: fadeIn 0.8s ease forwards;
+    padding: 10px;
+    border-radius: 15px;
+    background: variables.$dark-bg;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+
+    p {
+      margin: 8px 0;
+      color: variables.$light-text;
+    }
+    
+  }
+
+  .project-info {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 15px;
+    background: variables.$dark-bg;
+    text-align: left;
+    animation: fadeIn 0.8s ease forwards;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    p {
+      margin: 8px 0;
+    }
+  }
+
+  .contributors {
+    margin: 20px 0;
+    text-align: left;
+    background: variables.$body-bg;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    animation: fadeIn 0.8s ease forwards;
+
+    h3 {
+      font-size: 1.6rem;
+      color: variables.$dark-bg;
+      margin-bottom: 8px;
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 20px;
+
+      li {
+        font-size: 1.2rem;
+        color: variables.$light-text;
+        margin: 5px 0;
+        position: relative;
+        padding-left: 20px;
+
+        &::before {
+          content: "•";
+          position: absolute;
+          left: 0;
+          color: variables.$secondary-color;
+        }
+
+        &:hover {
+          transform: translateX(5px);
+        }
+      }
+    }
+  }
+
+  .tech-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+
+    .badge {
+      padding: 8px 12px;
+      background: variables.$secondary-color;
+      color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 8px 12px variables.$accent-color;
+      }
+    }
+  }
+
+  .github-circle-link {
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px auto;
+
+    .github-circle {
+      width: 90px;
+      height: 90px;
+      background: variables.$dark-bg;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-5px) scale(1.2);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.8);
+      }
+
+      .github-icon {
+        width: 60%;
+        height: 60%;
+        &:hover {
+          transform: scale(1.4);
+        }
+      }
+    }
   }
 }
 
@@ -106,6 +210,142 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.gallery {
+  margin: 30px 0;
+  text-align: left;
+
+  h3 {
+    font-size: 1.6rem;
+    color: variables.$dark-bg;
+    margin-bottom: 10px;
+  }
+
+  .gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+
+    img {
+      width: 180px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.4s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+      &:hover {
+        transform: scale(1.05) rotate(1deg);
+      }
+    }
+  }
+}
+
+.learnings {
+  margin: 30px 0;
+  padding: 20px;
+  background: variables.$body-bg;
+  border-left: 6px solid variables.$secondary-color;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: variables.$light-text;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  h3 {
+    color: variables.$dark-bg;
+    margin-bottom: 10px;
+  }
+}
+
+.stack-animated {
+  margin: 30px 0;
+
+  h3 {
+    text-align: center;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+    color: variables.$dark-bg;
+  }
+
+  .stack-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+  }
+
+  .flip-card {
+    background: transparent;
+    width: 150px;
+    height: 100px;
+    perspective: 1000px;
+
+    .flip-inner {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      position: relative;
+
+      &:hover {
+        transform: rotateY(180deg);
+      }
+
+      .flip-front,
+      .flip-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        padding: 10px;
+      }
+
+      .flip-front {
+        background-color: variables.$secondary-color;
+        color: #fff;
+      }
+
+      .flip-back {
+        background-color: variables.$dark-bg;
+        color: #fff;
+        transform: rotateY(180deg);
+      }
+    }
   }
 }
 
@@ -123,3 +363,4 @@
     height: 60px;
   }
 }
+
