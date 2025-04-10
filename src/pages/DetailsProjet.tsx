@@ -35,18 +35,19 @@ export default function DetailsProjet() {
       </div>
 
       <div className="project-info">
+        <h3> Infos</h3>
         <p><b>Date de création :</b> {project.date}</p>
         <p><b>Difficulté :</b> {project.difficulty}</p>
       </div>
 
       <div className="description">
-        <h3>Description :</h3>
+        <h3>Description </h3>
         <p>{project.description}</p>
       </div>
 
       {project.gallery && (
         <div className="gallery">
-          <h3>Galerie d’images :</h3>
+          <h3>Galerie d’images </h3>
           <div className="gallery-grid">
             {project.gallery.map((img, index) => (
               <img key={index} src={img} alt={`Step ${index + 1}`} />
@@ -55,17 +56,11 @@ export default function DetailsProjet() {
         </div>
       )}
 
-      <div className="tech-badges">
-        {project.technologies.map((tech, index) => (
-          <span key={index} className={`badge badge-${tech.toLowerCase()}`}>
-            {tech}
-          </span>
-        ))}
-      </div>
+      
 
       {project.techDetails && (
         <div className="stack-animated">
-          <h3>Stack technique :</h3>
+          <h3>Stack technique </h3>
           <div className="stack-grid">
             {project.techDetails.map((tech, index) => (
               <div key={index} className="flip-card">
@@ -81,7 +76,7 @@ export default function DetailsProjet() {
 
       {project.learnings && (
         <div className="learnings">
-          <h3>Ce que j’ai appris :</h3>
+          <h3>Ce que j’ai appris </h3>
           <p>{project.learnings}</p>
         </div>
       )}

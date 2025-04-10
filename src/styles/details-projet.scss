@@ -131,10 +131,10 @@
     }
   
     h3 {
+      text-align: center;
       font-size: 1.7rem;
-      color: variables.$secondary-color;
+      color: rgb(7, 131, 7);
       margin-bottom: 15px;
-      text-decoration: underline;
     }
   
     p {
@@ -152,6 +152,13 @@
   
 
   .project-info {
+    h3 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: rgba(132, 6, 6, 0.705);
+      margin-bottom: 10px;
+    }
+
     p {
       margin: 8px 0;
       color: variables.$light-text;
@@ -163,8 +170,9 @@
   }
   .gallery {
     h3 {
+      text-align: center;
       font-size: 1.6rem;
-      color: variables.$dark-bg;
+      color: rgb(18, 131, 183);
       margin-bottom: 10px;
     }
 
@@ -184,7 +192,7 @@
 
         &:hover {
           transform: scale(1.05) rotate(1deg);
-          box-shadow: 0 8px 14px rgba(255, 100, 100, 0.4);
+          box-shadow: 0 8px 14px rgb(18, 131, 183);
         }
       }
     }
@@ -194,36 +202,13 @@
     }
   }
 
-  .tech-badges {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-
-    .badge {
-      padding: 8px 12px;
-      background: variables.$secondary-color;
-      color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-      &:hover {
-        transform: translateY(-5px) scale(1.1);
-        box-shadow: 0 10px 14px rgba(0, 255, 200, 0.3);
-      }
-    }
-    &:hover {
-      box-shadow: 0 6px 12px rgb(125, 127, 9);
-    }
-  }
 
   .stack-animated {
     h3 {
       text-align: center;
       font-size: 1.6rem;
       margin-bottom: 20px;
-      color: variables.$dark-bg;
+      color: hsl(61, 87%, 27%);
     }
 
     .stack-grid {
@@ -231,7 +216,7 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 50px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
     }
 
     .flip-card {
@@ -270,23 +255,23 @@
         }
 
         .flip-front {
-          background-color: variables.$secondary-color;
-          color: #fff;
-          box-shadow: 0 4px 10px variables.$secondary-color;
+          background-color: variables.$body-bg;
+          color: variables.$light-text;
+          box-shadow: 0 4px 10px rgb(125, 127, 9);
         }
 
         .flip-back {
-          background-color: variables.$dark-bg;
-          color: #fff;
+          background-color: variables.$body-bg;
+          color: variables.$light-text;
           transform: rotateY(180deg);
-          box-shadow: 0 4px 10px #ff6702;
+          box-shadow: 0 10px 14px variables.$dark-bg;
         }
       }
       
     }
 
     &:hover {
-      box-shadow: 0 6px 12px rgb(123, 40, 168);
+      box-shadow: 0 6px 12px rgb(125, 127, 9);
     }
   }
 
@@ -295,8 +280,9 @@
     color: variables.$light-text;
 
     h3 {
-      color: variables.$dark-bg;
+      color: rgb(187, 22, 85);
       margin-bottom: 10px;
+      text-align: center;
     }
 
     &:hover {
