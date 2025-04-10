@@ -4,13 +4,17 @@ portfolio-fullstack/
 │   ├── src/
 │   │   ├── assets/      # Images, icônes, logos
 │   │   ├── components/  # Composants réutilisables (Navbar, Footer, Cards, etc.)
+│   │   │   ├── ContactLogos.tsx
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Formulaire.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── ProjectCard.tsx
 │   │   ├── pages/       # Pages principales
 │   │   │   ├── Home.tsx
-│   │   │   ├── Projects.tsx
-│   │   │   ├── ProjectDetails.tsx
+│   │   │   ├── Projts.tsx
+│   │   │   ├── DetailsProjet.tsx
 │   │   │   ├── Competences.tsx
 │   │   │   ├── Timeline.tsx
-│   │   │   ├── Demos.tsx ( celle la a eté supprimée)
 │   │   │   ├── Contact.tsx
 │   │   │   ├── NotFound.tsx
 │   │   ├── routes/      # Gestion des routes avec React Router
@@ -20,11 +24,20 @@ portfolio-fullstack/
 │   │   │   ├── global.scss
 │   │   │   ├── tous les autres.scss
 │   │   ├── data/        # Fichiers JSON temporaires ou mocks
-│   │   │   ├── projects.ts
+│   │   │   ├── projectsData.ts
 │   │   ├── App.tsx      # Composant principal
+│   │   ├── App.CSS      # Composant principal
 │   │   ├── main.tsx     # Point d'entrée React
+│   │   ├── vite-env.d.ts  
 │── .gitignore
+│── eslint.config.js
+│── index.html
+│── LICENSE.txt
+│── package-lock.json    
 │── package.json         # Dépendances npm
+│── README.md
+│── tsconfig.app.json        
 │── tsconfig.json        # Config TypeScript
+│── tsconfig.node.json        # Config TypeScript
 │── vite.config.ts       # Config Vite
 
