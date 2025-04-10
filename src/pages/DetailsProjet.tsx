@@ -34,20 +34,16 @@ export default function DetailsProjet() {
         <img src={project.imageUrl} alt={project.title} />
       </div>
 
-    
-
       <div className="project-info">
         <p><b>Date de création :</b> {project.date}</p>
         <p><b>Difficulté :</b> {project.difficulty}</p>
       </div>
 
-
       <div className="description">
         <h3>Description :</h3>
         <p>{project.description}</p>
       </div>
-      
-      {/* Galerie d'images */}
+
       {project.gallery && (
         <div className="gallery">
           <h3>Galerie d’images :</h3>
@@ -67,7 +63,6 @@ export default function DetailsProjet() {
         ))}
       </div>
 
-      {/* Stack technique animé */}
       {project.techDetails && (
         <div className="stack-animated">
           <h3>Stack technique :</h3>
@@ -84,23 +79,10 @@ export default function DetailsProjet() {
         </div>
       )}
 
-      {/* Ce que j’ai appris */}
       {project.learnings && (
         <div className="learnings">
           <h3>Ce que j’ai appris :</h3>
           <p>{project.learnings}</p>
-        </div>
-      )}
-
-
-      {project.contributors && (
-        <div className="contributors">
-          <h3>Contributeurs :</h3>
-          <ul>
-            {project.contributors.map((contributor, index) => (
-              <li key={index}>{contributor}</li>
-            ))}
-          </ul>
         </div>
       )}
 
