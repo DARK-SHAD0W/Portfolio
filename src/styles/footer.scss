@@ -1,13 +1,16 @@
 @use "./variables";
 
+/* 
+  Style du pied de page : fond sombre, texte centré, ombre portée et bords arrondis 
+*/
 footer {
-  background: variables.$dark-bg;
-  color: hsl(0, 0%, 0%);
-  text-align: center;
-  padding: 5px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 15px;
-  margin-top: 30px;
-  box-shadow: 0 8px 10px hsla(0, 0%, 0%, 0.75);
+  background: variables.$dark-bg;                   // Couleur de fond sombre
+  color: hsl(0, 0%, 0%);                          // Couleur du texte en noir pur
+  text-align: center;                               // Texte centré horizontalement
+  padding: 5px;                                     // Espacement intérieur
+  font-size: 16px;                                  // Taille du texte
+  font-weight: bold;                                // Texte en gras
+  border-radius: 15px;                              // Bords arrondis
+  margin-top: 30px;                                 // Marge supérieure pour espacement
+  box-shadow: 0 8px 10px hsla(0, 0%, 0%, 0.75);   // Ombre sombre pour effet de profondeur
 }

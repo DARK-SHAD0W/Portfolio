@@ -1,32 +1,50 @@
-@use "./variables";
-@use "./navbar";
-@use "./footer";*
+/* ==========================================================================
+   FICHIER GLOBAL DE STYLE – global.scss
+   Contient les styles de base globaux, les imports de composants, 
+   et la configuration du thème général.
+   ========================================================================== */
+
+
+@use "./variables";   // Variables de couleurs, polices, tailles...
+@use "./navbar";      // Styles spécifiques à la navbar
+@use "./footer";      // Styles spécifiques au footer
+
+/* -------------------------------------------------------------------------- */
+/*                         Styles généraux du body                            */
+/* -------------------------------------------------------------------------- */
 
 body {
-  font-family: Arial, sans-serif;
-  background-color:variables.$body-bg;
-  color: variables.$light-text;
+  font-family: Arial, sans-serif;                // Police principale
+  background-color: variables.$body-bg;          // Couleur de fond
+  color: variables.$light-text;                  // Couleur du texte
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100vh;                             // Hauteur minimale pour supporter le footer sticky
 }
 
+/* -------------------------------------------------------------------------- */
+/*                    Rappel des couleurs pour nav et footer                  */
+/* -------------------------------------------------------------------------- */
+
 nav {
-  background-color: variables.$dark-bg;
-  color: variables.$light-text;
+  background-color: variables.$dark-bg;          // Fond sombre pour la barre de navigation
+  color: variables.$light-text;                  // Texte clair
 }
 
 footer {
-  background-color: variables.$dark-bg;
-  color: variables.$light-text;
+  background-color: variables.$dark-bg;          // Fond sombre pour le pied de page
+  color: variables.$light-text;                  // Texte clair
 }
 
+/* -------------------------------------------------------------------------- */
+/*                      Classe utilitaire pour les titres                     */
+/* -------------------------------------------------------------------------- */
 
-// Classe pour les titres centrés et stylisés
+// Classe utilisée pour styliser les titres principaux des pages
 .page-title {
-  text-align: center;
+  text-align: center;                            // Centrage horizontal
   font-weight: bold;
-  font-size: 2.5rem;
-  margin: 20px 0;
-  color: variables.$dark-bg; /* Couleur identique au fond de la navbar */
+  font-size: 2.5rem;                             // Taille importante
+  margin: 20px 0;                                // Espacement haut/bas
+  color: variables.$light-text;                 // Couleur identique au fond de la navbar
 }

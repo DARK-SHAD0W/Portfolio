@@ -1,5 +1,6 @@
 @use "./variables";
 
+// Conteneur principal de la carte projet
 .project-card {
   background: variables.$body-bg;
   border-radius: 20px;
@@ -13,10 +14,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
   animation: fadeIn 1.2s ease-in-out;
-  
 
+  // Animation à l'affichage
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -28,16 +28,17 @@
     }
   }
 
-
+  // Effet au survol
   &:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.75);
   }
 
+  // En-tête contenant le titre et les icônes
   .header {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Fix to separate icons */
+    justify-content: space-between;
     gap: 10px;
     margin-bottom: 10px;
 
@@ -50,6 +51,7 @@
     }
   }
 
+  // Conteneur d’image
   .image-container {
     width: 100%;
     height: 200px;
@@ -65,12 +67,14 @@
     }
   }
 
+  // Description du projet
   p {
     font-size: 1.2rem;
     color: variables.$light-text;
     margin: 5px 0;
   }
 
+  // Liste des badges technologies
   .tech-badges {
     margin: 10px 0;
     display: flex;
@@ -93,7 +97,8 @@
     }
   }
 
-  .github-icon-container{
+  // Icônes GitHub et détails
+  .github-icon-container {
     display: flex;
     align-items: center;
     margin-left: 8px;
@@ -104,6 +109,7 @@
     align-items: center;
     margin-right: 8px;
   }
+
   .github-circle,
   .details-circle {
     width: 50px;
@@ -125,6 +131,7 @@
     .details-icon {
       width: 60%;
       height: 60%;
+
       &:hover {
         transform: scale(1.3);
       }
@@ -132,7 +139,7 @@
   }
 }
 
-/* Responsive */
+// Responsive : tablette
 @media (max-width: 768px) {
   .project-card {
     width: 280px;
@@ -163,6 +170,7 @@
   }
 }
 
+// Responsive : mobile
 @media (max-width: 480px) {
   .project-card {
     width: 260px;

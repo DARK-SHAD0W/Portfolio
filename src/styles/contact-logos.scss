@@ -1,5 +1,8 @@
 @use "./variables";
 
+/* 
+  Conteneur principal des logos de contact : affichage en ligne avec animation d'apparition
+*/
 .contact-logos {
   display: flex;
   justify-content: center;
@@ -7,7 +10,6 @@
   margin: 20px auto;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   animation: fadeIn 1.2s ease-in-out;
-  
 
   @keyframes fadeIn {
     from {
@@ -20,7 +22,10 @@
     }
   }
 
-  
+  /*
+    Conteneur individuel pour chaque logo de contact (Gmail, LinkedIn, etc.)
+    Forme arrondie avec ombre et effet de zoom au survol
+  */
   .logo-container {
     width: 100px;
     height: 100px;
@@ -36,39 +41,44 @@
       transform: scale(1.1);
     }
 
+    // Image du logo à l'intérieur du container
     img {
       width: 50%;
       height: 50%;
     }
   }
 
-  /* Couleurs spécifiques pour chaque logo */
+  /*
+    Ombres spécifiques au survol de chaque logo
+  */
   .gmail {
     &:hover {
-      box-shadow: 0 8px 16px #D14836;
+      box-shadow: 0 8px 16px #D14836; // Couleur rouge pour Gmail
     }
   }
 
   .linkedin {
     &:hover {
-      box-shadow: 0 8px 16px #0077B5;
+      box-shadow: 0 8px 16px #0077B5; // Couleur bleue LinkedIn
     }
   }
 
   .phone {
     &:hover {
-      box-shadow: 0 8px 16px #34A853;
+      box-shadow: 0 8px 16px #34A853; // Vert pour appel téléphonique
     }
   }
 
   .instagram {
     &:hover {
-      box-shadow: 0 8px 16px #E1306C;
+      box-shadow: 0 8px 16px #E1306C; // Rose pour Instagram
     }
   }
 }
 
-/* Responsive */
+/* 
+  Responsiveness pour tablette : réduction de la taille des icônes et de l'espacement
+*/
 @media (max-width: 768px) {
   .contact-logos {
     gap: 20px;
@@ -85,6 +95,9 @@
   }
 }
 
+/* 
+  Responsiveness pour mobile : icônes plus petites et espacement réduit
+*/
 @media (max-width: 480px) {
   .contact-logos {
     gap: 15px;

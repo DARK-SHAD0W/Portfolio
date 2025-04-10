@@ -1,5 +1,6 @@
 @use "./variables";
 
+// Conteneur principal de la page compétences
 .competences-container {
   padding: 20px;
   max-width: 800px;
@@ -20,20 +21,23 @@
       transform: translateY(0);
     }
   }
-  
+
   &:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
   }
 
+  // Titre principal
   .page-title {
+    font-weight: bold;
     font-size: 2.5rem;
-    color: variables.$dark-bg;
+    color: variables.$light-text;
     text-align: center;
     margin-bottom: 20px;
     font-family: variables.$font-stylish;
   }
 
+  // Groupe de compétence (logiciel, DB, web...)
   .competence-group {
     margin: 20px 0;
 
@@ -46,6 +50,7 @@
     }
   }
 
+  // Bloc de section avec logo + texte
   .skills-section {
     display: flex;
     justify-content: space-between;
@@ -62,13 +67,14 @@
       box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
     }
 
+    // Texte des compétences
     .skills-text {
       max-width: 70%;
 
       h3 {
         font-size: 1.5rem;
         margin-bottom: 5px;
-        color: variables.$dark-bordeaux; 
+        color: variables.$dark-bordeaux;
         font-family: variables.$font-stylish;
       }
 
@@ -79,7 +85,7 @@
       }
     }
 
-    /* Effets similaires aux photos de la page Home */
+    // Icône/logo des compétences
     .skills-logo {
       width: 150px;
       height: 150px;
@@ -115,7 +121,7 @@
   }
 }
 
-/* Responsive */
+// Responsive : tablette
 @media (max-width: 768px) {
   .competences-container {
     padding: 15px;
@@ -139,6 +145,7 @@
   }
 }
 
+// Responsive : mobile
 @media (max-width: 480px) {
   .competences-container {
     padding: 10px;

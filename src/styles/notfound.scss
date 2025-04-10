@@ -1,5 +1,6 @@
 @use "./variables";
 
+// ===== CONTENEUR PRINCIPAL DE LA PAGE 404 =====
 .not-found {
   display: flex;
   justify-content: center;
@@ -8,6 +9,7 @@
   background: variables.$body-bg;
   animation: fadeIn 1.2s ease-in-out;
 
+  // === Animation d'apparition de la page ===
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -19,6 +21,7 @@
     }
   }
 
+  // ===== STRUCTURE INTERNE CENTRÉE =====
   .not-found-container {
     display: flex;
     flex-direction: column;
@@ -26,7 +29,7 @@
     gap: 20px;
   }
 
-  /* Triangle non rempli avec point d'exclamation */
+  // ===== TRIANGLE DE SIGNALISATION (exclamation) =====
   .not-found-triangle {
     width: 0;
     height: 0;
@@ -54,7 +57,7 @@
     }
   }
 
-  /* Chiffres 404 avec effet 3D */
+  // ===== NUMÉRO 404 AVEC EFFETS D'OMBRE =====
   .not-found-numbers {
     display: flex;
     gap: 20px;
@@ -74,20 +77,21 @@
       }
     }
 
+    // === Effets spécifiques au survol des chiffres ===
     .number4:hover {
-      box-shadow: 0 8px 16px rgba(0, 0, 255, 0.6); /* Bleu */
+      box-shadow: 0 8px 16px rgba(0, 0, 255, 0.6); // Bleu
     }
 
     .number0:hover {
-      box-shadow: 0 8px 16px rgba(0, 255, 0, 0.6); /* Vert */
+      box-shadow: 0 8px 16px rgba(0, 255, 0, 0.6); // Vert
     }
 
     .number4:nth-child(3):hover {
-      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.6); /* Rouge */
+      box-shadow: 0 8px 16px rgba(255, 0, 0, 0.6); // Rouge
     }
   }
 
-  /* Message et bouton retour */
+  // ===== MESSAGE D'ERREUR + BOUTON DE RETOUR =====
   .message {
     text-align: center;
     margin-top: 20px;
@@ -129,7 +133,7 @@
       }
 
       &:hover {
-        background-color:  hsl(0, 0%, 30%); ;
+        background-color: hsl(0, 0%, 30%);
         color: variables.$body-bg;
         box-shadow: 0 0.5rem 0 variables.$dark-bg;
       }
@@ -137,7 +141,9 @@
   }
 }
 
-/* Responsive Design */
+// ===== MEDIA QUERIES POUR LE RESPONSIVE =====
+
+// === TABLETTES ===
 @media (max-width: 768px) {
   .not-found-triangle {
     border-left: 70px solid transparent;
@@ -158,11 +164,13 @@
     font-size: 2rem;
   }
 
-  .message p, .message .bouton3D {
+  .message p,
+  .message .bouton3D {
     font-size: 1rem;
   }
 }
 
+// === SMARTPHONES ===
 @media (max-width: 480px) {
   .not-found-triangle {
     border-left: 50px solid transparent;
@@ -183,7 +191,8 @@
     font-size: 1.8rem;
   }
 
-  .message p, .message .bouton3D {
+  .message p,
+  .message .bouton3D {
     font-size: 0.9rem;
   }
 }

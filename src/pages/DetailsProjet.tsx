@@ -2,12 +2,17 @@ import { useParams, Link } from "react-router-dom";
 import "../styles/details-projet.scss";
 import { projectsData, ProjectDetailsProps } from "../data/projectsData";
 
+// Composant de la page de détails du projet
 export default function DetailsProjet() {
+  // Récupère l'ID du projet depuis l'URL
   const { projectId } = useParams<{ projectId: string }>();
+
+  // Recherche du projet correspondant dans le tableau de données
   const project: ProjectDetailsProps | undefined = projectsData.find(
     (proj) => proj.id === projectId
   );
 
+  // Affiche un message d'erreur si le projet n'est pas trouvé
   if (!project) {
     return (
       <div className="details-container">
@@ -21,6 +26,7 @@ export default function DetailsProjet() {
 
   return (
     <div className="details-container">
+      {/* Titre et bouton retour */}
       <div className="header">
         <h1>{project.title}</h1>
         <Link to="/projets" className="back-button">
@@ -30,24 +36,28 @@ export default function DetailsProjet() {
         </Link>
       </div>
 
+      {/* Image principale du projet */}
       <div className="image-container">
         <img src={project.imageUrl} alt={project.title} />
       </div>
 
+      {/* Bloc infos du projet */}
       <div className="project-info">
-        <h3> Infos</h3>
+        <h3>Infos</h3>
         <p><b>Date de création :</b> {project.date}</p>
         <p><b>Difficulté :</b> {project.difficulty}</p>
       </div>
 
+      {/* Description détaillée */}
       <div className="description">
-        <h3>Description </h3>
+        <h3>Description</h3>
         <p>{project.description}</p>
       </div>
 
+      {/* Galerie d’images si elle existe */}
       {project.gallery && (
         <div className="gallery">
-          <h3>Galerie d’images </h3>
+          <h3>Galerie d’images</h3>
           <div className="gallery-grid">
             {project.gallery.map((img, index) => (
               <img key={index} src={img} alt={`Step ${index + 1}`} />
@@ -56,11 +66,10 @@ export default function DetailsProjet() {
         </div>
       )}
 
-      
-
+      {/* Stack technique animé si présent */}
       {project.techDetails && (
         <div className="stack-animated">
-          <h3>Stack technique </h3>
+          <h3>Stack technique</h3>
           <div className="stack-grid">
             {project.techDetails.map((tech, index) => (
               <div key={index} className="flip-card">
@@ -74,13 +83,15 @@ export default function DetailsProjet() {
         </div>
       )}
 
+      {/* Ce que tu as appris (retour d'expérience) */}
       {project.learnings && (
         <div className="learnings">
-          <h3>Ce que j’ai appris </h3>
+          <h3>Ce que j’ai appris</h3>
           <p>{project.learnings}</p>
         </div>
       )}
 
+      {/* Lien vers le dépôt GitHub si disponible */}
       {project.githubLink && (
         <a
           href={project.githubLink}

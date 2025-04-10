@@ -1,5 +1,6 @@
 @use "./variables";
 
+// Conteneur principal du formulaire
 .formulaire-container {
   display: flex;
   flex-direction: column;
@@ -9,10 +10,9 @@
   background: variables.$body-bg;
   border-radius: 20px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-
   animation: fadeIn 1.2s ease-in-out;
-  
 
+  // Animation d’apparition douce
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -24,6 +24,7 @@
     }
   }
 
+  // Titre principal
   .page-title {
     font-size: 2.5rem;
     color: variables.$secondary-color;
@@ -31,27 +32,31 @@
     font-family: variables.$font-stylish;
   }
 
+  // Conteneur du formulaire
   .contact-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
     width: 80%;
 
+    // Labels de chaque champ
     label {
       font-size: 1.2rem;
       font-weight: bold;
       color: variables.$light-text;
     }
 
-    input, textarea {
+    // Champs de saisie texte et zone de message
+    input,
+    textarea {
       padding: 10px;
       font-size: 1.1rem;
       border-radius: 8px;
       border: none;
-      outline: none; /* Supprime le contour noir */
+      outline: none;
       box-shadow: 0 4px 8px variables.$dark-bg;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      
+
       &:focus {
         transform: scale(1.02);
         box-shadow: 0 6px 12px variables.$accent-color;
@@ -66,18 +71,27 @@
       }
     }
 
+    // Zone de texte du message
+    textarea {
+      min-width: 98.4%;
+      max-width: 100%; 
+    }
+
+    // Message d’erreur sous un champ
     .error {
       font-size: 0.9rem;
       color: #dc3545;
       margin-top: -5px;
     }
 
+    // Message de confirmation après envoi
     .success-msg {
       font-size: 1.2rem;
       color: #28a745;
       margin-top: 10px;
     }
 
+    // Bouton d’envoi
     .btn {
       margin-top: 10px;
       padding: 10px 20px;
@@ -96,10 +110,25 @@
 
       &.success {
         background-color: #28a745;
-        box-shadow: 0 6px 12px #28a745;
+        box-shadow: 0 6px 12px #1a6d2e;
         border: 5px solid #28a745;
         color: white;
       }
+
+      &.ready {
+        background-color: #28a745;
+        border: 5px solid #28a745;
+        box-shadow: 0 6px 12px #28a745;
+        color: white;
+      }
+      
+      &.error {
+        background-color: #dc3545;
+        border: 5px solid #dc3545;
+        box-shadow: 0 6px 12px #dc3545;
+        color: white;
+      }
+      
     }
   }
 }

@@ -1,14 +1,18 @@
-import React from 'react';
+
 import "../styles/competences.scss";
 
+// Composant principal de la page Compétences
 export default function Competences() {
   return (
     <div className="competences-container">
+      {/* Titre de la page */}
       <h1 className="page-title">Compétences</h1>
 
-      {/* Développement Logiciel */}
+      {/* Groupe : Développement Logiciel */}
       <div className="competence-group">
         <h2>Développement Logiciel</h2>
+
+        {/* Bloc : Langages de Programmation */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Langages de Programmation</h3>
@@ -18,6 +22,8 @@ export default function Competences() {
             <img src="/src/assets/images-competences/C1.png" alt="Code" />
           </div>
         </div>
+
+        {/* Bloc : Langages de Description */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Langages de Description</h3>
@@ -27,19 +33,23 @@ export default function Competences() {
             <img src="/src/assets/images-competences/C2.png" alt="HTML/CSS" />
           </div>
         </div>
+
+        {/* Bloc : Frameworks et Bibliothèques */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Frameworks et Bibliothèques</h3>
             <p>React.js, Node.js, Express.js, Vite, React Router DOM</p>
           </div>
           <div className="skills-logo">
-            <img src="/src/assets/images-competences/C3.png"  alt="Frameworks" />
+            <img src="/src/assets/images-competences/C3.png" alt="Frameworks" />
           </div>
         </div>
+
+        {/* Bloc : Outils de Développement */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Outils de Développement</h3>
-            <p> VS Code, Git, GitHub, Unity, Processing ,PowerBi</p>
+            <p>VS Code, Git, GitHub, Unity, Processing, PowerBi</p>
           </div>
           <div className="skills-logo">
             <img src="/src/assets/images-competences/C4.png" alt="Dev Tools" />
@@ -47,9 +57,11 @@ export default function Competences() {
         </div>
       </div>
 
-      {/* Base de Données */}
+      {/* Groupe : Base de Données */}
       <div className="competence-group">
         <h2>Base de Données</h2>
+
+        {/* Bloc : SGBD */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>SGBD</h3>
@@ -61,9 +73,11 @@ export default function Competences() {
         </div>
       </div>
 
-      {/* Technologies Web */}
+      {/* Groupe : Technologies Web */}
       <div className="competence-group">
         <h2>Technologies Web</h2>
+
+        {/* Bloc : Frontend */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Frontend</h3>
@@ -73,6 +87,8 @@ export default function Competences() {
             <img src="/src/assets/images-competences/C6.png" alt="Frontend" />
           </div>
         </div>
+
+        {/* Bloc : Backend */}
         <div className="skills-section">
           <div className="skills-text">
             <h3>Backend</h3>

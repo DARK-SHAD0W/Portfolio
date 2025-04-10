@@ -1,46 +1,48 @@
 @use "./variables";
 
+// ===== CONTENEUR PRINCIPAL DE LA PAGE PROJETS =====
 .projets-page {
   padding: 20px;
   max-width: 1200px;
   margin: auto;
   text-align: center;
 
+  // ===== TITRE DE LA PAGE =====
   .page-title {
+    font-weight: bold;
     font-size: 2.5rem;
-    color: variables.$dark-bg;
+    color: variables.$light-text;
     margin-bottom: 30px;
     font-family: variables.$font-stylish;
   }
 
+  // ===== LISTE DES CARTES PROJETS =====
   .project-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Par défaut : 3 colonnes */
+    grid-template-columns: repeat(3, 1fr); // 3 colonnes sur écran large
     gap: 20px;
     justify-items: center;
     align-items: stretch;
     margin-left: -3%;
-
     animation: fadeIn 1.2s ease-in-out;
-  
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  
   }
 
-  /* Pour les écrans moyens (tablettes) */
+  // ===== ANIMATION D’APPARITION DE LA LISTE =====
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // ===== RESPONSIVE : TABLETTES =====
   @media (max-width: 992px) {
     .project-list {
-      grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+      grid-template-columns: repeat(2, 1fr); // 2 colonnes
       gap: 20px;
     }
 
@@ -49,10 +51,10 @@
     }
   }
 
-  /* Pour les petits écrans (mobiles) */
+  // ===== RESPONSIVE : PETITS ÉCRANS =====
   @media (max-width: 768px) {
     .project-list {
-      grid-template-columns: repeat(1, 1fr); /* 1 colonne */
+      grid-template-columns: repeat(1, 1fr); // 1 colonne
       gap: 15px;
     }
 
@@ -61,10 +63,10 @@
     }
   }
 
-  /* Pour les très petits écrans (smartphones) */
+  // ===== RESPONSIVE : SMARTPHONES TRÈS ÉTROITS =====
   @media (max-width: 480px) {
     .project-list {
-      grid-template-columns: repeat(1, 1fr); /* Toujours 1 colonne */
+      grid-template-columns: repeat(1, 1fr); // Toujours 1 colonne
       gap: 10px;
     }
 

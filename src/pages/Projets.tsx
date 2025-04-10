@@ -2,6 +2,7 @@ import ProjectCard from "../components/ProjectCard";
 import "../styles/projets.scss";
 import { projectsData } from "../data/projectsData";
 
+// Composant de la page "Projets"
 export default function Projets() {
   return (
     <div className="projets-page">

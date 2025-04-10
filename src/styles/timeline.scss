@@ -1,5 +1,6 @@
 @use "./variables";
 
+/* ========== Container principal de la timeline ========== */
 .timeline-container {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   animation: fadeIn 1.2s ease-in-out;
 }
 
+/* Animation d’apparition générale */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -19,7 +21,7 @@
   }
 }
 
-/* Vertical Line */
+/* ========== Ligne verticale continue principale ========== */
 .vertical-line {
   position: absolute;
   left: 7%;
@@ -32,6 +34,7 @@
   animation: growLine 0.5s ease forwards;
 }
 
+/* Animation de croissance de la ligne principale */
 @keyframes growLine {
   from {
     height: 0;
@@ -41,7 +44,7 @@
   }
 }
 
-/* Dotted Line */
+/* ========== Ligne verticale en pointillés à la fin ========== */
 .vertical-line.dotted {
   position: absolute;
   left: 7%;
@@ -59,6 +62,7 @@
   animation: scrollDots 2s linear infinite;
 }
 
+/* Animation de défilement des pointillés */
 @keyframes scrollDots {
   from {
     background-position: 0 0;
@@ -68,7 +72,7 @@
   }
 }
 
-/* Timeline Element */
+/* ========== Bloc individuel de chaque événement ========== */
 .timeline-element {
   display: flex;
   align-items: center;
@@ -80,6 +84,7 @@
   animation: appearElement 0.4s ease forwards;
 }
 
+/* Animation d’apparition d’un élément */
 @keyframes appearElement {
   from {
     opacity: 0;
@@ -91,13 +96,14 @@
   }
 }
 
+/* Effet au survol d’un élément ou des suivants */
 .timeline-element:hover,
 .timeline-element:hover ~ .timeline-element {
   transform: scale(1.05);
   z-index: 2;
 }
 
-/* Timeline Date */
+/* ========== Affichage de l’année de l’événement ========== */
 .timeline-date {
   position: absolute;
   left: -5%;
@@ -117,21 +123,19 @@
   transform: scale(1.15);
 }
 
-/* Timeline Point (3D Logo) */
+/* ========== Logo point central (rond) ========== */
 .timeline-point {
   position: absolute;
   margin-left: 12%;
   width: 60px;
   height: 60px;
   background-color: variables.$body-bg;
-  border-color: variables.$dark-bg;
   border: 4px solid variables.$dark-bg;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 4px 8px variables.$secondary-color;
   animation: fadeInText 0.4s ease forwards;
   animation-delay: 0.2s;
@@ -146,9 +150,9 @@
 
 .timeline-element:hover .timeline-point {
   transform: scale(1.2) rotate(10deg);
-  box-shadow: 0 6px 12px variables.$secondary-color;
   margin-left: 10%;
-  border: 4px solid variables.$secondary-color;
+  box-shadow: 0 6px 12px variables.$secondary-color;
+  border-color: variables.$secondary-color;
 }
 
 .timeline-point.active {
@@ -157,7 +161,7 @@
   box-shadow: 0 8px 14px rgba(0, 0, 0, 0.4);
 }
 
-/* Description Container */
+/* ========== Conteneur pour le titre de l’événement ========== */
 .timeline-description-container {
   margin-left: 25%;
   perspective: 1000px;
@@ -177,16 +181,21 @@
   color: variables.$accent-color;
 }
 
-/* Description and Detail */
-.timeline-description, .timeline-detail {
+/* ========== Boîtes description et détails ========== */
+.timeline-description,
+.timeline-detail {
   padding: 15px 25px;
   background: variables.$body-bg;
   border-radius: 12px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   margin-bottom: 12px;
+  min-width: 400px;
+  max-width: 400px;
+  animation: fadeInText 0.8s ease forwards;
 }
 
+/* Flottement au survol */
 .timeline-description:hover {
   animation: float 1.8s ease-in-out infinite alternate;
   box-shadow: 0 8px 14px rgba(255, 0, 0, 0.4);
@@ -197,6 +206,7 @@
   box-shadow: 0 8px 14px rgba(0, 0, 255, 0.4);
 }
 
+/* Animation flottante */
 @keyframes float {
   from {
     transform: translateY(0);
@@ -206,7 +216,7 @@
   }
 }
 
-/* Detail Styling */
+/* Détails spécifiques */
 .timeline-detail {
   margin-left: 2%;
   padding: 12px 22px;
@@ -214,26 +224,7 @@
   color: variables.$light-text;
 }
 
-/* Description & Detail Box */
-.timeline-description, .timeline-detail {
-  min-width: 400px;
-  max-width: 400px;
-  margin-bottom: 12px;
-  animation: fadeInText 0.8s ease forwards;
-}
-
-@keyframes fadeInText {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Pop-up Detailed Info */
+/* Texte additionnel visible au survol */
 .extra-info {
   display: block;
   opacity: 0;
@@ -255,16 +246,16 @@
   max-height: 200px;
 }
 
-
-/* Responsive Styling for Smaller Screens */
+/* ========== Responsive design ========== */
 @media (max-width: 768px) {
   .timeline-element {
-    gap: 	40px;
     flex-direction: column;
     align-items: flex-start;
+    gap: 40px;
   }
 
-  .timeline-description-container, .timeline-detail {
+  .timeline-description-container,
+  .timeline-detail {
     margin-left: 0;
     max-width: 100%;
   }
@@ -284,9 +275,21 @@
   .timeline-element:hover .timeline-point {
     margin-left: 18%;
   }
-  
 
-  .vertical-line, .vertical-line.dotted {
+  .vertical-line,
+  .vertical-line.dotted {
     left: 20%;
+  }
+}
+
+/* Animation texte description */
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

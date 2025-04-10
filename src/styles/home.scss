@@ -1,16 +1,20 @@
 @use "./variables";
 
+// ===============================
+// Conteneur principal de la page Home
+// ===============================
 .home-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   overflow-y: auto;
-  flex-direction: column;
   opacity: 0;
   visibility: hidden;
   animation: fadeInContainer 0.5s ease forwards;
 }
 
+// Animation pour faire apparaître en douceur le container principal
 @keyframes fadeInContainer {
   from {
     opacity: 0;
@@ -23,8 +27,53 @@
   }
 }
 
+// ===============================
+// Texte d’introduction
+// ===============================
+.intro-text {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: variables.$body-bg;
+  color: variables.$light-text;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  animation: fadeIn 1.2s ease-in-out;
+  font-family: variables.$font-stylish;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  b {
+    color: variables.$dark-bordeaux;
+    font-size: 1.6rem;
+  }
+
+  // Animation d’apparition
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+// ===============================
+// Carte de profil (photo + description)
+// ===============================
 .profile-card {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   gap: 20px;
   background: variables.$body-bg;
@@ -32,10 +81,8 @@
   border-radius: 20px;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
   max-width: 90%;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: relative;
   opacity: 0;
   visibility: hidden;
   animation: fadeInElement 0.5s ease forwards;
@@ -47,6 +94,7 @@
   }
 }
 
+// Animation générique des éléments secondaires
 @keyframes fadeInElement {
   from {
     opacity: 0;
@@ -60,16 +108,19 @@
   }
 }
 
+// ===============================
+// Conteneur photo de profil
+// ===============================
 .photo-container {
-  border-radius: 50%;
-  overflow: hidden;
   width: 160px;
   height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: variables.$dark-bg;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   margin: 10px;
   position: relative;
   z-index: 1;
-  background: variables.$dark-bg;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,6 +143,9 @@
   }
 }
 
+// ===============================
+// Description textuelle
+// ===============================
 .description {
   max-width: 500px;
   padding: 0 20px;
@@ -115,7 +169,9 @@
   }
 }
 
-/* CV Download Button */
+// ===============================
+// Bouton de téléchargement du CV
+// ===============================
 .cv-button-container {
   margin-top: 20px;
   opacity: 0;
@@ -148,7 +204,9 @@
   }
 }
 
-/* Responsive Adjustments */
+// ===============================
+// Responsive Design : Tablettes
+// ===============================
 @media (max-width: 768px) {
   .home-container {
     height: auto;
@@ -179,8 +237,16 @@
     font-size: 1.2rem;
     padding: 10px 20px;
   }
+
+  .intro-text {
+    font-size: 1.2rem;
+    padding: 8px 16px;
+  }
 }
 
+// ===============================
+// Responsive Design : Mobiles
+// ===============================
 @media (max-width: 480px) {
   .home-container {
     height: auto;
@@ -212,54 +278,7 @@
     font-size: 1rem;
     padding: 8px 16px;
   }
-}
 
-.intro-text {
-  text-align: center;
-  font-size: 1.4rem;
-  margin: 20px auto;
-  padding: 10px 20px;
-  background: variables.$body-bg;
-  color: variables.$light-text;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
-  animation: fadeIn 1.2s ease-in-out;
-  font-family: variables.$font-stylish;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
-  }
-
-  b {
-    color: variables.$dark-bordeaux;
-    font-size: 1.6rem;
-  }
-
-  /* Animation d'apparition */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .intro-text {
-    font-size: 1.2rem;
-    padding: 8px 16px;
-  }
-}
-
-@media (max-width: 480px) {
   .intro-text {
     font-size: 1rem;
     padding: 6px 12px;

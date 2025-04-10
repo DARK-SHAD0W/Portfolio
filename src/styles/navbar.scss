@@ -1,5 +1,6 @@
 @use "./variables";
 
+// Wrapper général de la navbar (structure horizontale)
 .navbar-wrapper {
   display: flex;
   align-items: center;
@@ -9,6 +10,7 @@
   margin-bottom: 12px;
 }
 
+// Bloc de l'icône représentant la page actuelle
 .icon-box {
   background: variables.$dark-bg;
   padding: 8px;
@@ -24,6 +26,7 @@
   }
 }
 
+// Bloc principal de la navbar (fond, espacement et forme)
 nav {
   background: variables.$dark-bg;
   padding: 12px 20px;
@@ -34,6 +37,7 @@ nav {
   flex-grow: 1;
   box-shadow: 0 8px 10px hsla(0, 0%, 0%, 0.75);
 
+  // Liste des liens de navigation
   ul {
     list-style: none;
     display: flex;
@@ -44,6 +48,7 @@ nav {
     margin: 0;
     flex-wrap: wrap;
 
+    // Chaque lien individuel
     li {
       display: flex;
       justify-content: center;
@@ -75,7 +80,7 @@ nav {
     }
   }
 
-  /* Responsive adjustments */
+  // Responsive : écran ≤ 768px
   @media (max-width: 768px) {
     ul {
       gap: 15px;
@@ -101,6 +106,7 @@ nav {
     }
   }
 
+  // Responsive : écran ≤ 480px
   @media (max-width: 480px) {
     .navbar-wrapper {
       flex-direction: column;
