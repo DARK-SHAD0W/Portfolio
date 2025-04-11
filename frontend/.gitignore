@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Fichier de configuration des variables d’environnement
+.env
+.env.*
