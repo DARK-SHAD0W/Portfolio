@@ -1,7 +1,30 @@
 PORTFOLIO/
 │
-├── backend/                    # 🚀 Back-end Node.js (API, base de données, etc.)
 │
+├── backend/                    # 🚀 Back-end Node.js + MongoDB
+    ├── node_modules/                        # Modules Node installés
+    ├── package.json                         # Dépendances backend
+    ├── package-lock.json
+    ├── tsconfig.json                        # Configuration TypeScript
+    └── src/
+        ├── app.ts                           # Point d'entrée principal de l'app Express
+        ├── config/                          # Fichiers de configuration (DB, env, etc.)
+        │   └── db.ts
+        ├── controllers/                     # Logique métier / gestion des requêtes
+        │   ├── projectController.ts
+        │   └── contactController.ts
+        ├── models/                          # Modèles Mongoose (MongoDB)
+        │   ├── Project.ts
+        │   └── Message.ts
+        ├── routes/                          # Définition des routes Express
+        │   ├── projectRoutes.ts
+        │   └── contactRoutes.ts
+        ├── middlewares/                    # Middlewares personnalisés
+        │   └── errorHandler.ts
+        └── utils/                          # Fonctions utilitaires diverses
+            └── validateInput.ts
+
+
 ├── frontend/                   # 🎨 Front-end React (nouveau dossier)
 │   ├── src/
 │   │   ├── assets/             # Images, icônes, logos
