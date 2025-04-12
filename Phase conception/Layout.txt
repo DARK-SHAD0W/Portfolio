@@ -1,30 +1,31 @@
 PORTFOLIO/
 │
 │
-├── backend/                    # 🚀 Back-end Node.js + MongoDB
+start command :npx ts-node src/server.ts
+├── backend/                                 # 🚀 Back-end Node.js + MongoDB
     ├── node_modules/                        # Modules Node installés
-    ├── package.json                         # Dépendances backend
-    ├── package-lock.json
-    ├── tsconfig.json                        # Configuration TypeScript
+    ├── public/ 
+        ├── cv/  
+            ├──Cv_2025.pdf
+        ├── images/   
     └── src/
-        ├── app.ts                           # Point d'entrée principal de l'app Express
         ├── config/                          # Fichiers de configuration (DB, env, etc.)
         │   └── db.ts
         ├── controllers/                     # Logique métier / gestion des requêtes
-        │   ├── projectController.ts
-        │   └── contactController.ts
         ├── models/                          # Modèles Mongoose (MongoDB)
-        │   ├── Project.ts
-        │   └── Message.ts
+        │   ├── Project.ts                   # ✅ Modèle Mongoose des projets (images + data)
         ├── routes/                          # Définition des routes Express
-        │   ├── projectRoutes.ts
-        │   └── contactRoutes.ts
+        │   ├── staticRoutes.ts
         ├── middlewares/                    # Middlewares personnalisés
-        │   └── errorHandler.ts
-        └── utils/                          # Fonctions utilitaires diverses
-            └── validateInput.ts
+        ├── utils/                          # Fonctions utilitaires diverses
+        ├── app.ts                           # Point d'entrée principal de l'app Express
+        ├── server.ts                         
+    ├── .env                              
+    ├── package.json                         # Dépendances backend
+    ├── package-lock.json
+    ├── tsconfig.json                        # Configuration TypeScript
 
-
+start command :npm run dev
 ├── frontend/                   # 🎨 Front-end React (nouveau dossier)
 │   ├── src/
 │   │   ├── assets/             # Images, icônes, logos

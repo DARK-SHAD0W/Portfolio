@@ -4,6 +4,7 @@
 
 // -----------------------------
 // Importation des modules
+/*
 // -----------------------------
 import mongoose from "mongoose";
 
@@ -36,3 +37,4 @@ const connectDB = async () => {
 // Exportation de la fonction
 // -----------------------------
 export default connectDB;
+*/

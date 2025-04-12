@@ -7,7 +7,7 @@
 // -----------------------------
 import app from "./app";
 import dotenv from "dotenv";
-import connectDB from "./config/db"; // Connexion MongoDB
+//import connectDB from "./config/db"; // Connexion MongoDB
 
 // -----------------------------
 // Chargement des variables d'environnement
@@ -22,8 +22,12 @@ const PORT = process.env.PORT || 5000;
 // -----------------------------
 // Connexion à MongoDB puis démarrage du serveur
 // -----------------------------
+/*
 connectDB().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
-  });
+    console.log(`connexion mongoDB reussie`);
+
 });
+*/
+app.listen(PORT, () => {
+  console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
+})
