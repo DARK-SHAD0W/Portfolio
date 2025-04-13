@@ -9,8 +9,9 @@ import path from "path";
 
 // Import des routes personnalisées
 import staticRoutes from "./routes/staticRoutes";
-import projectRoutes from "./routes/projectRoutes"; // ✅ AJOUTÉ
-
+import projectRoutes from "./routes/projectRoutes"; 
+import authRoutes from "./routes/authRoutes";
+import cvRoutes from "./routes/cvRoutes"; // Import de la route pour le CV
 // -----------------------------------------------------
 // Chargement des variables d'environnement
 // -----------------------------------------------------
@@ -46,6 +47,10 @@ app.get("/", (_req, res) => {
 // -----------------------------------------------------
 app.use("/api", staticRoutes);              // Pour les fichiers simples comme le CV
 app.use("/api/projects", projectRoutes);    // ✅ Route API pour les projets
+app.use("/api", cvRoutes);
+app.use("/api/auth", authRoutes);
+
+
 
 // -----------------------------------------------------
 // Exportation de l'application Express
