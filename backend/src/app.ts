@@ -9,6 +9,7 @@ import path from "path";
 
 // Import des routes personnalisées
 import staticRoutes from "./routes/staticRoutes";
+import projectRoutes from "./routes/projectRoutes"; // ✅ AJOUTÉ
 
 // -----------------------------------------------------
 // Chargement des variables d'environnement
@@ -23,18 +24,10 @@ const app = express();
 // -----------------------------------------------------
 // Middlewares globaux
 // -----------------------------------------------------
-
-// Autoriser les requêtes Cross-Origin (communication entre frontend et backend)
-app.use(cors());
-
-// Affiche les requêtes HTTP dans la console (utile en développement)
-app.use(morgan("dev"));
-
-// Permet de parser automatiquement les requêtes JSON
-app.use(express.json());
-
-// Permet de parser les données de formulaires encodées (urlencoded)
-app.use(express.urlencoded({ extended: true }));
+app.use(cors()); // Autoriser les requêtes Cross-Origin
+app.use(morgan("dev")); // Logger les requêtes HTTP
+app.use(express.json()); // Parser les requêtes JSON
+app.use(express.urlencoded({ extended: true })); // Parser les formulaires
 
 // -----------------------------------------------------
 // Dossier statique : sert les fichiers comme les images ou le CV PDF
@@ -51,7 +44,8 @@ app.get("/", (_req, res) => {
 // -----------------------------------------------------
 // Montage des routes personnalisées
 // -----------------------------------------------------
-app.use("/api", staticRoutes);
+app.use("/api", staticRoutes);              // Pour les fichiers simples comme le CV
+app.use("/api/projects", projectRoutes);    // ✅ Route API pour les projets
 
 // -----------------------------------------------------
 // Exportation de l'application Express

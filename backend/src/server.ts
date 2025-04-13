@@ -1,16 +1,16 @@
 // ------------------------------------------------------------------
-// Point d’entrée principal du serveur Node.js (Express)
+// Point d’entrée principal du serveur Node.js avec Express
 // ------------------------------------------------------------------
 
 // -----------------------------
-// Importation des modules
+// Importations des modules
 // -----------------------------
-import app from "./app";
-import dotenv from "dotenv";
-//import connectDB from "./config/db"; // Connexion MongoDB
+import app from "./app";                 // L'application Express
+import dotenv from "dotenv";            // Pour charger les variables d’environnement
+import connectDB from "./config/db";    // Connexion à la base MongoDB
 
 // -----------------------------
-// Chargement des variables d'environnement
+// Chargement des variables d’environnement depuis .env
 // -----------------------------
 dotenv.config();
 
@@ -22,12 +22,8 @@ const PORT = process.env.PORT || 5000;
 // -----------------------------
 // Connexion à MongoDB puis démarrage du serveur
 // -----------------------------
-/*
 connectDB().then(() => {
-    console.log(`connexion mongoDB reussie`);
-
+  app.listen(PORT, () => {
+    console.log(`🚀 Serveur backend démarré sur http://localhost:${PORT}`);
+  });
 });
-*/
-app.listen(PORT, () => {
-  console.log(`Serveur backend démarré sur http://localhost:${PORT}`);
-})

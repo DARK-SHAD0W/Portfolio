@@ -1,45 +1,45 @@
 // -------------------------------------------------------------------
-// Fichier : ProjectRoutes.ts
+// Fichier : projectRoutes.ts
 // Description : Définition des routes API pour la gestion des projets
 // -------------------------------------------------------------------
 
-import { Router } from "express";
+import express from "express";
 import {
   getAllProjects,
   getProjectById,
   createProject,
   updateProject,
   deleteProject,
-} from "../controllers/projectController";
+} from "../controllers/ProjectController";
 
-const router = Router();
+import uploadCardImage from "../middlewares/uploadCardImage";
+import { uploadGalleryImages } from "../middlewares/uploadMiddleware";
 
-// -----------------------------------------------------------
-// Route GET /api/projects → Liste tous les projets
-// -----------------------------------------------------------
+const router = express.Router();
+
+// -------------------------------------------------------------------
+// GET /api/projects → Récupère tous les projets
+// -------------------------------------------------------------------
 router.get("/", getAllProjects);
 
-// -----------------------------------------------------------
-// Route GET /api/projects/:id → Détail d’un projet par ID
-// -----------------------------------------------------------
+// -------------------------------------------------------------------
+// GET /api/projects/:id → Récupère un projet par son ID
+// -------------------------------------------------------------------
 router.get("/:id", getProjectById);
 
-// -----------------------------------------------------------
-// Route POST /api/projects → Crée un nouveau projet
-// -----------------------------------------------------------
-router.post("/", createProject);
+// -------------------------------------------------------------------
+// POST /api/projects → Crée un nouveau projet avec images
+// -------------------------------------------------------------------
+router.post("/", uploadCardImage, uploadGalleryImages, createProject);
 
-// -----------------------------------------------------------
-// Route PUT /api/projects/:id → Met à jour un projet existant
-// -----------------------------------------------------------
+// -------------------------------------------------------------------
+// PUT /api/projects/:id → Met à jour un projet existant par ID
+// -------------------------------------------------------------------
 router.put("/:id", updateProject);
 
-// -----------------------------------------------------------
-// Route DELETE /api/projects/:id → Supprime un projet
-// -----------------------------------------------------------
+// -------------------------------------------------------------------
+// DELETE /api/projects/:id → Supprime un projet existant par ID
+// -------------------------------------------------------------------
 router.delete("/:id", deleteProject);
 
-// -----------------------------------------------------------
-// Exportation du routeur
-// -----------------------------------------------------------
 export default router;
