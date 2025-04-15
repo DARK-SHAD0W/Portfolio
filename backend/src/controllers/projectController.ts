@@ -44,11 +44,8 @@ export const createProject: RequestHandler = async (req, res) => {
 
     if (!imageCardFile) {
       res.status(400).json({ message: "L'image principale (imageCard) est obligatoire." });
-      return;
+      return ;
     }
-
-    const imageCardBuffer = imageCardFile.buffer;
-    const galleryImagesBuffer = galleryFiles?.map((file) => file.buffer) || [];
 
     const {
       title,
@@ -61,22 +58,37 @@ export const createProject: RequestHandler = async (req, res) => {
     } = req.body;
 
     const parsedStack = typeof stack === "string" ? JSON.parse(stack) : stack;
+    const parsedTechnologies = Array.isArray(technologies)
+      ? technologies
+      : technologies.split(",");
 
     const newProject = new Project({
       title,
       description,
-      technologies: Array.isArray(technologies) ? technologies : technologies.split(","),
+      technologies: parsedTechnologies.map((t: string) => t.trim()),
       githubLink,
-      demoLink,
-      imageCard: imageCardBuffer,
-      galleryImages: galleryImagesBuffer,
+      demoLink: demoLink || "",
+      imageCard: imageCardFile.buffer,
+      galleryImages: galleryFiles?.map((file) => file.buffer) || [],
       whatILearned,
       stack: parsedStack,
     });
+    console.log("🧪 Données reçues :");
+    console.log("title:", title);
+    console.log("description:", description);
+    console.log("technologies:", technologies);
+    console.log("githubLink:", githubLink);
+    console.log("demoLink:", demoLink);
+    console.log("whatILearned:", whatILearned);
+    console.log("stack:", stack);
+    console.log("imageCard:", imageCardFile?.originalname);
+    console.log("galleryImages:", galleryFiles?.length);
 
     await newProject.save();
+
     res.status(201).json(newProject);
   } catch (error) {
+    console.error("Erreur création projet:", error);
     res.status(400).json({ message: "Échec de la création du projet" });
   }
 };

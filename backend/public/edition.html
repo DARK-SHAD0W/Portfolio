@@ -1,0 +1,48 @@
+<!-- backend/public/edition.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Modifier un projet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar stylisée -->
+  <div class="navbar-wrapper">
+    <div class="icon-box">
+      <img src="backend.png" alt="Modifier" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/ajout.html">Ajouter</a></li>
+        <li><a href="/edition.html">Modifier</a></li>
+        <li><a href="/suppression.html">Supprimer</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <h2>Modifier un projet existant</h2>
+
+    <!-- Formulaire de mise à jour -->
+    <form id="editProjectForm">
+      <input type="text" name="id" placeholder="ID du projet à modifier" required />
+      <input type="text" name="title" placeholder="Nouveau titre" />
+      <input type="text" name="description" placeholder="Nouvelle description" />
+      <input type="text" name="githubLink" placeholder="Nouveau lien GitHub" />
+      <textarea name="whatILearned" placeholder="Ce que vous avez appris (modifié)"></textarea>
+      <textarea name="stack" placeholder='Stack JSON (ex: [{"name":"React","icon":"react.png","description":"Front-end"}])'></textarea>
+
+      <button type="submit" class="btn">🔁 Mettre à jour</button>
+      <p class="error" id="editError" style="display: none;"></p>
+    </form>
+  </main>
+
+  <footer>
+    Backend Portfolio — Modification d’un projet
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

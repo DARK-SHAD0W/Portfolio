@@ -1,0 +1,42 @@
+<!-- backend/public/suppression.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Supprimer un projet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar stylisée -->
+  <div class="navbar-wrapper">
+    <div class="icon-box">
+      <img src="backend.png" alt="Supprimer" />
+    </div>
+    <nav>
+      <ul>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="/ajout.html">Ajouter</a></li>
+        <li><a href="/edition.html">Modifier</a></li>
+        <li><a href="/suppression.html">Supprimer</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main>
+    <h2>Supprimer un projet existant</h2>
+
+    <!-- Formulaire de suppression -->
+    <form id="deleteProjectForm">
+      <input type="text" name="id" placeholder="ID du projet à supprimer" required />
+      <button type="submit" class="btn">🗑️ Supprimer</button>
+      <p class="error" id="deleteError" style="display: none;"></p>
+    </form>
+  </main>
+
+  <footer>
+    Backend Portfolio — Suppression d’un projet
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
