@@ -33,14 +33,15 @@ app.use(express.urlencoded({ extended: true })); // Parser les formulaires
 // -----------------------------------------------------
 // Dossier statique : sert les fichiers comme les images ou le CV PDF
 // -----------------------------------------------------
-app.use("/public", express.static(path.join(__dirname, "../../public")));
+app.use(express.static(path.join(__dirname, "../public")));
 
 // -----------------------------------------------------
-// Route de test simple (à supprimer ou modifier plus tard)
+// Route de index.html (pour la page d'acceuil)
 // -----------------------------------------------------
 app.get("/", (_req, res) => {
-  res.send("Backend Node.js + Express fonctionne !");
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
+
 
 // -----------------------------------------------------
 // Montage des routes personnalisées
@@ -49,6 +50,7 @@ app.use("/api", staticRoutes);              // Pour les fichiers simples comme l
 app.use("/api/projects", projectRoutes);    // ✅ Route API pour les projets
 app.use("/api", cvRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", authRoutes); // 
 
 
 

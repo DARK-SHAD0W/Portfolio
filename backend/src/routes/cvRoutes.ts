@@ -6,6 +6,7 @@
 import express from "express";
 import uploadCV from "../middlewares/uploadCV";
 import { downloadCV, updateCV } from "../controllers/CVController";
+import isAuthenticated from "../middlewares/authMiddleware";
 
 // import authMiddleware from "../middlewares/authMiddleware"; // si besoin
 
@@ -15,6 +16,6 @@ const router = express.Router();
 router.get("/cv", downloadCV);
 
 // PUT /api/cv → Mettre à jour le CV (admin uniquement)
-router.put("/cv", uploadCV, updateCV); // ← ajouter authMiddleware si activé
+router.put("/cv", isAuthenticated, uploadCV, updateCV); // ← ajouter authMiddleware si activé
 
 export default router;

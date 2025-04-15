@@ -18,8 +18,7 @@ import {
 
 import uploadCardImage from "../middlewares/uploadCardImage";
 import { uploadGalleryImages } from "../middlewares/uploadMiddleware";
-
-// Initialisation du routeur Express
+import isAuthenticated from "../middlewares/authMiddleware";
 const router = express.Router();
 
 // -------------------------------------------------------------------
@@ -33,19 +32,19 @@ router.get("/", getAllProjects);
 router.get("/:id", getProjectById);
 
 // -------------------------------------------------------------------
-// POST /api/projects → Crée un nouveau projet avec images
+// POST /api/projects → Crée un nouveau projet avec images (protégée)
 // -------------------------------------------------------------------
-router.post("/", uploadCardImage, uploadGalleryImages, createProject);
+router.post("/", isAuthenticated, uploadCardImage, uploadGalleryImages, createProject);
 
 // -------------------------------------------------------------------
-// PUT /api/projects/:id → Met à jour un projet existant
+// PUT /api/projects/:id → Met à jour un projet existant (protégée)
 // -------------------------------------------------------------------
-router.put("/:id", updateProject);
+router.put("/:id", isAuthenticated, updateProject);
 
 // -------------------------------------------------------------------
-// DELETE /api/projects/:id → Supprime un projet
+// DELETE /api/projects/:id → Supprime un projet (protégée)
 // -------------------------------------------------------------------
-router.delete("/:id", deleteProject);
+router.delete("/:id", isAuthenticated, deleteProject);
 
 // -------------------------------------------------------------------
 // GET /api/projects/:id/image → Image principale du projet
@@ -53,9 +52,9 @@ router.delete("/:id", deleteProject);
 router.get("/:id/image", getProjectImage);
 
 // -------------------------------------------------------------------
-// PUT /api/projects/:id/image-card → Met à jour l’image principale
+// PUT /api/projects/:id/image-card → Met à jour l’image principale (protégée)
 // -------------------------------------------------------------------
-router.put("/:id/image-card", uploadCardImage, updateProjectImageCard);
+router.put("/:id/image-card", isAuthenticated, uploadCardImage, updateProjectImageCard);
 
 // -------------------------------------------------------------------
 // GET /api/projects/:id/gallery → Images de la galerie
@@ -63,9 +62,9 @@ router.put("/:id/image-card", uploadCardImage, updateProjectImageCard);
 router.get("/:id/gallery", getGalleryImages);
 
 // -------------------------------------------------------------------
-// PUT /api/projects/:id/gallery → Met à jour les images de galerie
+// PUT /api/projects/:id/gallery → Met à jour les images de galerie (protégée)
 // -------------------------------------------------------------------
-router.put("/:id/gallery", uploadGalleryImages, updateGalleryImages);
+router.put("/:id/gallery", isAuthenticated, uploadGalleryImages, updateGalleryImages);
 
 // -------------------------------------------------------------------
 // Exportation du routeur

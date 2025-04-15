@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">🌐 Portfolio Admin</div>
+    <nav>
+      <ul>
+        <li><a href="#">Accueil</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#login">Connexion</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Panneau d’administration du portfolio</h1>
+      <p>Ajoutez, modifiez ou supprimez vos projets en toute sécurité.</p>
+      <div class="button-group">
+        <button class="btn-3d">Ajouter un projet</button>
+        <button class="btn-3d">Modifier un projet</button>
+        <button class="btn-3d">Supprimer un projet</button>
+      </div>
+    </section>
+
+    <section id="login" class="login-form">
+      <h2>Connexion Admin</h2>
+      <form id="adminLogin">
+        <input type="email" name="email" placeholder="Email" required/>
+        <input type="password" name="password" placeholder="Mot de passe" required/>
+        <button type="submit" class="btn-3d">Connexion</button>
+      </form>
+      <div id="tokenDisplay" class="token-box hidden"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2025 Portfolio Admin - Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
