@@ -3,12 +3,11 @@
 PORTFOLIO/
 ├── backend/                               # 🧠 Partie back-end Node.js + Express
 │   ├── node_modules/                      # Modules Node installés automatiquement
-│
+│   │
 │   ├── public/                            # Dossier statique : admin HTML + fichiers accessibles publiquement
 │   │   ├── cv/
 │   │   │   └── Cv_2025.pdf                # Fichier PDF du CV accessible via /api/cv
-│   │   ├── images/                        # Dossier images pour projets (si utilisé)
-│   │   │   └── gallery1.png ...           # (Optionnel) Images manuelles
+│   │   │ 
 │   │   ├── backend.png                    # Icône utilisée dans la navbar admin
 │   │   ├── favicon.ico                    # Favicon du site backend
 │   │   ├── index.html                     # 🏠 Page d'accueil admin (connexion + boutons)
@@ -17,46 +16,36 @@ PORTFOLIO/
 │   │   ├── suppression.html               # ❌ Page de suppression de projet
 │   │   ├── style.css                      # 🎨 Fichier CSS global des pages admin
 │   │   └── script.js                      # ⚙️ Script JS pour la logique CRUD + auth admin
-│
+│   │
 │   ├── src/
 │   │   ├── app.ts                         # Configuration Express : middlewares, routes, statiques
 │   │   ├── server.ts                      # Point d’entrée : démarrage du serveur + connexion DB
-│
+│   │
 │   ├── config/
 │   │   └── db.ts                          # Connexion à MongoDB avec vérification MONGO_URI
-│
+│   │
 │   ├── controllers/                       # 📦 Logique métier
 │   │   ├── AuthController.ts              # 🔐 Connexion admin : POST /api/admin/login
 │   │   ├── CVController.ts                # 📄 Envoi / récupération du CV
 │   │   └── ProjectController.ts           # 🛠 CRUD complet des projets (images incluses)
-│
-│   ├── data/
-│   │   └── seedProject.ts                 # (Optionnel) Script pour peupler la base initialement
-│
 │   ├── middlewares/
 │   │   ├── authMiddleware.ts              # ✅ Protection JWT avec isAuthenticated
-│   │   ├── uploadCardImage.ts             # Middleware pour imageCard (1 image)
-│   │   ├── uploadGalleryImages.ts         # Middleware pour galleryImages (multiple)
-│   │   ├── uploadMiddleware.ts            # (Redondant) À supprimer si non utilisé
-│   │   ├── uploadProjectImages.ts         # (Obsolète) À supprimer si doublon
-│   │   └── uploadCV.ts                    # (Optionnel) Upload du CV via POST
-│
+│   │   ├── uploadProjectImages.ts         # 
+│   │   └── uploadCV.ts                    # Upload du CV via POST
+│   │
 │   ├── models/
 │   │   ├── AdminModel.ts                  # 🧑‍💼 Modèle Mongoose pour les admins
 │   │   └── ProjectModel.ts                # 📁 Modèle complet d’un projet (images, stack, etc.)
-│
+│   │
 │   ├── routes/
 │   │   ├── authRoutes.ts                  # POST /api/admin/login
 │   │   ├── projectRoutes.ts               # Toutes les routes /api/projects (GET, POST, PUT, DELETE...)
 │   │   ├── staticRoutes.ts                # Route pour images statiques, CV, etc.
 │   │   └── cvRoutes.ts                    # GET /api/cv (récupération du PDF)
-│
+│   │
 │   ├── scripts/
-│   │   └── createAdmin.ts                 # Script de création manuelle d’un compte admin
-│
-│   ├── utils/                             # 📦 Fonctions utilitaires réutilisables
-│   │   └── (vide ou à créer)              # Par exemple : logger.ts, parseInput.ts...
-│
+│   │   └── createAdmin.ts                 # Script de création manuelle d’un compte admin  
+│   │
 │   ├── .env                               # Variables d’environnement (MONGO_URI, JWT_SECRET...)
 │   ├── package.json                       # Dépendances backend + scripts
 │   ├── package-lock.json
@@ -90,7 +79,6 @@ PORTFOLIO/
 │   │   ├── data/
 │   │   │   └── projectsData.ts            # Données temporaires pour les projets
 │   │   ├── App.tsx                        # Racine de l’application React
-│   │   ├── App.css                        # Styles CSS globaux (vite)
 │   │   ├── main.tsx                       # Point d’entrée (ReactDOM)
 │   │   ├── vite-env.d.ts                  # Déclaration d’environnement Vite
 │

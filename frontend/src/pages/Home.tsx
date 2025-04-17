@@ -1,7 +1,28 @@
+import { useCallback } from "react";
 import "../styles/home.scss";
 
 // Composant principal de la page d’accueil (Home)
 export default function Home() {
+  // Logic pour télécharger le CV depuis le backend
+  const downloadCv = useCallback(async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/cv", { method: "GET" });
+      if (!res.ok) throw new Error(`Serveur a répondu ${res.status}`);
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "Cv_Ahmed_Yahya.pdf";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error("Erreur téléchargement CV :", err);
+      alert("❌ Impossible de télécharger le CV. Réessayez plus tard.");
+    }
+  }, []);
+
   return (
     <div>
       {/* Titre de la page */}
@@ -39,9 +60,9 @@ export default function Home() {
 
         {/* Bouton pour télécharger le CV au format PDF */}
         <div className="cv-button-container">
-          <a href="/src/assets/CV-Ahmed-Yahya.pdf" download>
-            <button className="cv-button">Télécharger le CV</button>
-          </a>
+          <button className="cv-button" onClick={downloadCv}>
+            Télécharger le CV
+          </button>
         </div>
 
       </div>
