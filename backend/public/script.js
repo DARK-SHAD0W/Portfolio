@@ -156,3 +156,60 @@ if (deleteForm) {
     }
   });
 }
+
+// ----------------------------------------------------------------------
+// mise à jour du CV
+// ----------------------------------------------------------------------
+
+// Récupère les éléments HTML
+const cvInput = document.getElementById("cvFileInput");
+const btnUpdateCv = document.getElementById("btn-update-cv");
+
+// 1) Clic sur le bouton “Modifier le CV” → on déclenche le file picker
+btnUpdateCv?.addEventListener("click", () => {
+  if (!isAdminConnected) {
+    // Si pas connecté, on affiche le warning
+    document.getElementById("admin-warning").style.display = "block";
+    return;
+  }
+  cvInput.click();
+});
+
+// 2) Lorsqu’un fichier est sélectionné → on envoie la requête PUT
+cvInput?.addEventListener("change", async () => {
+  if (!isAdminConnected) {
+    document.getElementById("admin-warning").style.display = "block";
+    return;
+  }
+  const file = cvInput.files[0];
+  if (!file) return;
+
+  // Prépare le FormData attendu par Multer
+  const formData = new FormData();
+  formData.append("cv", file);
+
+  try {
+    const response = await fetch("/api/cv", {
+      method: "PUT",
+      headers: {
+        // Ajout de l’entête d’authentification
+        Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      alert("✅ CV mis à jour avec succès !");
+    } else {
+      // Lecture du message d’erreur
+      const err = await response.json();
+      alert("❌ Erreur lors de la mise à jour : " + (err.message || "échec inconnu"));
+    }
+  } catch (err) {
+    console.error("Erreur réseau CV:", err);
+    alert("❌ Erreur réseau lors de la mise à jour du CV.");
+  } finally {
+    // Réinitialise l’input pour pouvoir re-sélectionner le même fichier si besoin
+    cvInput.value = "";
+  }
+});

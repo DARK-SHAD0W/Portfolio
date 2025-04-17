@@ -1,3 +1,4 @@
+// backend/src/controllers/CVController.ts
 // ----------------------------------------------------------------------
 // Contrôleur : CVController.ts
 // Gère le téléchargement et la mise à jour du fichier CV
@@ -8,7 +9,8 @@ import path from "path";
 import fs from "fs";
 
 // 📍 Chemin absolu vers le fichier CV à remplacer
-const CV_FILE_PATH = path.resolve(__dirname, "../../../public/cv/Cv_2025.pdf");
+//    On remonte de src/controllers → src → backend, puis dans public/cv
+const CV_FILE_PATH = path.resolve(__dirname, "../../public/cv/Cv_2025.pdf");
 
 // GET /api/cv → Télécharger le fichier CV
 export const downloadCV = (req: Request, res: Response): void => {
@@ -16,23 +18,23 @@ export const downloadCV = (req: Request, res: Response): void => {
     res.status(404).json({ message: "CV non trouvé." });
     return;
   }
-
   res.download(CV_FILE_PATH, "Cv_Ahmed_Yahya.pdf");
 };
 
 // PUT /api/cv → Mettre à jour le fichier CV
 export const updateCV = (req: Request, res: Response): void => {
   const file = req.file;
-
   if (!file) {
     res.status(400).json({ message: "Aucun fichier fourni." });
     return;
   }
 
   try {
+    // Écrit directement le buffer reçu par multer dans le bon dossier
     fs.writeFileSync(CV_FILE_PATH, file.buffer);
     res.status(200).json({ message: "CV mis à jour avec succès." });
-  } catch {
+  } catch (err) {
+    console.error("Erreur fs.writeFileSync :", err);
     res.status(500).json({ message: "Erreur lors de l’enregistrement du fichier CV." });
   }
 };

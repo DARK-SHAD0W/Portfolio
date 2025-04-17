@@ -19,7 +19,6 @@
         <li><a href="#" id="logoutBtn">Déconnexion</a></li>
       </ul>
     </nav>
-    
   </header>
 
   <main>
@@ -40,7 +39,20 @@
     <!-- Boutons admin -->
     <section>
       <h1>Panneau d’administration du portfolio</h1>
+
+      <!-- Input caché pour sélectionner un nouveau CV (PDF) -->
+      <input
+        type="file"
+        id="cvFileInput"
+        accept="application/pdf"
+        style="display: none;"
+      />
+
       <div class="btn-group">
+        <!-- Nouveau bouton pour mettre à jour le CV -->
+        <a id="btn-update-cv" class="btn">📄 Modifier le CV</a>
+
+        <!-- Boutons existants de gestion des projets -->
         <a href="ajout.html" id="btn-ajouter" class="btn">➕ Ajouter un projet</a>
         <a href="edition.html" id="btn-modifier" class="btn">🛠 Modifier un projet</a>
         <a href="suppression.html" id="btn-supprimer" class="btn">❌ Supprimer un projet</a>
