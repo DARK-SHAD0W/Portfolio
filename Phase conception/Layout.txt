@@ -1,41 +1,79 @@
-PORTFOLIO/
-│
-│
-start command :npx ts-node src/server.ts
-├── backend/                                 # 🚀 Back-end Node.js + MongoDB
-    ├── node_modules/                        # Modules Node installés
-    ├── public/ 
-        ├── cv/  
-            ├──Cv_2025.pdf
-        ├── images/   
-    └── src/
-        ├── config/                          # Fichiers de configuration (DB, env, etc.)
-        │   └── db.ts
-        ├── controllers/                     # Logique métier / gestion des requêtes
-        ├── models/                          # Modèles Mongoose (MongoDB)
-        │   ├── Project.ts                   # ✅ Modèle Mongoose des projets (images + data)
-        ├── routes/                          # Définition des routes Express
-        │   ├── staticRoutes.ts
-        ├── middlewares/                    # Middlewares personnalisés
-        ├── utils/                          # Fonctions utilitaires diverses
-        ├── app.ts                           # Point d'entrée principal de l'app Express
-        ├── server.ts                         
-    ├── .env                              
-    ├── package.json                         # Dépendances backend
-    ├── package-lock.json
-    ├── tsconfig.json                        # Configuration TypeScript
+-----layout du projet-----
 
-start command :npm run dev
-├── frontend/                   # 🎨 Front-end React (nouveau dossier)
+PORTFOLIO/
+├── backend/                               # 🧠 Partie back-end Node.js + Express
+│   ├── node_modules/                      # Modules Node installés automatiquement
+│
+│   ├── public/                            # Dossier statique : admin HTML + fichiers accessibles publiquement
+│   │   ├── cv/
+│   │   │   └── Cv_2025.pdf                # Fichier PDF du CV accessible via /api/cv
+│   │   ├── images/                        # Dossier images pour projets (si utilisé)
+│   │   │   └── gallery1.png ...           # (Optionnel) Images manuelles
+│   │   ├── backend.png                    # Icône utilisée dans la navbar admin
+│   │   ├── favicon.ico                    # Favicon du site backend
+│   │   ├── index.html                     # 🏠 Page d'accueil admin (connexion + boutons)
+│   │   ├── ajout.html                     # 📦 Page d’ajout de projet
+│   │   ├── edition.html                   # 🔁 Page de modification de projet
+│   │   ├── suppression.html               # ❌ Page de suppression de projet
+│   │   ├── style.css                      # 🎨 Fichier CSS global des pages admin
+│   │   └── script.js                      # ⚙️ Script JS pour la logique CRUD + auth admin
+│
 │   ├── src/
-│   │   ├── assets/             # Images, icônes, logos
-│   │   ├── components/         # Composants réutilisables
+│   │   ├── app.ts                         # Configuration Express : middlewares, routes, statiques
+│   │   ├── server.ts                      # Point d’entrée : démarrage du serveur + connexion DB
+│
+│   ├── config/
+│   │   └── db.ts                          # Connexion à MongoDB avec vérification MONGO_URI
+│
+│   ├── controllers/                       # 📦 Logique métier
+│   │   ├── AuthController.ts              # 🔐 Connexion admin : POST /api/admin/login
+│   │   ├── CVController.ts                # 📄 Envoi / récupération du CV
+│   │   └── ProjectController.ts           # 🛠 CRUD complet des projets (images incluses)
+│
+│   ├── data/
+│   │   └── seedProject.ts                 # (Optionnel) Script pour peupler la base initialement
+│
+│   ├── middlewares/
+│   │   ├── authMiddleware.ts              # ✅ Protection JWT avec isAuthenticated
+│   │   ├── uploadCardImage.ts             # Middleware pour imageCard (1 image)
+│   │   ├── uploadGalleryImages.ts         # Middleware pour galleryImages (multiple)
+│   │   ├── uploadMiddleware.ts            # (Redondant) À supprimer si non utilisé
+│   │   ├── uploadProjectImages.ts         # (Obsolète) À supprimer si doublon
+│   │   └── uploadCV.ts                    # (Optionnel) Upload du CV via POST
+│
+│   ├── models/
+│   │   ├── AdminModel.ts                  # 🧑‍💼 Modèle Mongoose pour les admins
+│   │   └── ProjectModel.ts                # 📁 Modèle complet d’un projet (images, stack, etc.)
+│
+│   ├── routes/
+│   │   ├── authRoutes.ts                  # POST /api/admin/login
+│   │   ├── projectRoutes.ts               # Toutes les routes /api/projects (GET, POST, PUT, DELETE...)
+│   │   ├── staticRoutes.ts                # Route pour images statiques, CV, etc.
+│   │   └── cvRoutes.ts                    # GET /api/cv (récupération du PDF)
+│
+│   ├── scripts/
+│   │   └── createAdmin.ts                 # Script de création manuelle d’un compte admin
+│
+│   ├── utils/                             # 📦 Fonctions utilitaires réutilisables
+│   │   └── (vide ou à créer)              # Par exemple : logger.ts, parseInput.ts...
+│
+│   ├── .env                               # Variables d’environnement (MONGO_URI, JWT_SECRET...)
+│   ├── package.json                       # Dépendances backend + scripts
+│   ├── package-lock.json
+│   ├── tsconfig.json                      # Configuration TypeScript du backend
+│
+│   💡 Start backend : `npx ts-node src/server.ts`
+
+├── frontend/                              # 🎨 Partie front-end React (avec Vite)
+│   ├── src/
+│   │   ├── assets/                        # Images, icônes, logos (importables)
+│   │   ├── components/                    # Composants réutilisables
 │   │   │   ├── ContactLogos.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   ├── Formulaire.tsx
 │   │   │   ├── Navbar.tsx
 │   │   │   ├── ProjectCard.tsx
-│   │   ├── pages/              # Pages principales
+│   │   ├── pages/                         # 📄 Pages React
 │   │   │   ├── Home.tsx
 │   │   │   ├── Projts.tsx
 │   │   │   ├── DetailsProjet.tsx
@@ -43,27 +81,29 @@ start command :npm run dev
 │   │   │   ├── Timeline.tsx
 │   │   │   ├── Contact.tsx
 │   │   │   ├── NotFound.tsx
-│   │   ├── routes/             # Gestion des routes
-│   │   │   ├── Router.tsx
-│   │   ├── styles/             # SCSS global ou modulaire
-│   │   │   ├── variables.scss
-│   │   │   ├── global.scss
-│   │   │   ├── tous les autres.scss
-│   │   ├── data/               # Données temporaires
-│   │   │   ├── projectsData.ts
-│   │   ├── App.tsx             # Composant principal
-│   │   ├── App.css
-│   │   ├── main.tsx            # Point d'entrée React
-│   │   ├── vite-env.d.ts
+│   │   ├── routes/
+│   │   │   └── Router.tsx                 # Système de routage (React Router DOM)
+│   │   ├── styles/
+│   │   │   ├── variables.scss             # 🎨 Variables SCSS globales
+│   │   │   ├── global.scss                # Styles globaux
+│   │   │   └── tous-les-autres.scss       # Tous les fichiers SCSS supplémentaires
+│   │   ├── data/
+│   │   │   └── projectsData.ts            # Données temporaires pour les projets
+│   │   ├── App.tsx                        # Racine de l’application React
+│   │   ├── App.css                        # Styles CSS globaux (vite)
+│   │   ├── main.tsx                       # Point d’entrée (ReactDOM)
+│   │   ├── vite-env.d.ts                  # Déclaration d’environnement Vite
 │
-│   ├── index.html              # Page HTML principale
-│   ├── .gitignore
-│   ├── vite.config.ts
+│   ├── index.html                         # Fichier HTML principal injecté par Vite
+│   ├── vite.config.ts                     # Configuration Vite
 │   ├── tsconfig.json
 │   ├── tsconfig.app.json
 │   ├── tsconfig.node.json
-│   ├── eslint.config.js
+│   ├── eslint.config.js                  # Configuration linting / formatting
 │   ├── README.md
 │   ├── package.json
 │   ├── package-lock.json
 │   ├── LICENSE.txt
+│
+│   💡 Start frontend : `npm run dev`
+

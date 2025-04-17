@@ -1,3 +1,25 @@
+
+import api from "../api/api";
+
+export const fetchProjects = async () => {
+  try {
+    const response = await api.get("/projects");
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des projets", error);
+    return [];
+  }
+};
+
+
+
+
+
+
+
+//ancien contenu :
+/*
+
 // Définition du type principal utilisé pour chaque projet
 export type ProjectDetailsProps = {
   id: string;
@@ -160,3 +182,4 @@ export const projectsData: ProjectDetailsProps[] = [
     ]
   }
 ];
+*/

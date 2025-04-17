@@ -1,4 +1,3 @@
-<!-- backend/public/ajout.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,7 +6,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Navbar avec style sombre et icône -->
   <div class="navbar-wrapper">
     <div class="icon-box">
       <img src="backend.png" alt="Plus" />
@@ -25,27 +23,22 @@
   <main>
     <h2>Ajouter un nouveau projet</h2>
 
-    <!-- Formulaire d’ajout de projet -->
     <form id="addProjectForm" enctype="multipart/form-data">
       <input type="text" name="title" placeholder="Titre du projet" required />
       <input type="text" name="description" placeholder="Description" required />
-      <input type="text" name="technologies" placeholder="Technologies (ex: HTML,CSS,JS)" required />
-
       <input type="text" name="githubLink" placeholder="Lien GitHub" required />
+      <input type="text" name="demoLink" placeholder="Lien de démo (optionnel)" />
       <textarea name="whatILearned" placeholder="Ce que j’ai appris" required></textarea>
       <input type="file" name="imageCard" accept="image/*" required />
       <input type="file" name="galleryImages" accept="image/*" multiple />
-      <textarea name="stack" placeholder='Stack (ex: [{"name":"React", "icon":"react.png", "description":"Front-end"}])' required></textarea>
+      <textarea name="technologies" placeholder="Technos (ex: HTML,CSS,JS)" required></textarea>
+      <textarea name="stack" placeholder='Stack JSON (ex: [{"name":"React","icon":"react.png","description":"Front"}])' required></textarea>
 
       <button type="submit" class="btn">📦 Ajouter le projet</button>
       <p class="error" id="addError" style="display: none;"></p>
     </form>
-    <p class="error" id="addError" style="display: none;"></p>
-    <p class="error" id="admin-warning" style="display: none;">⚠ Connexion admin requise.</p>
-
   </main>
 
-  <!-- Pied de page -->
   <footer>
     Backend Portfolio — Ajout de projet
   </footer>

@@ -1,22 +1,50 @@
+// frontend/src/pages/DetailsProjet.tsx
+
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { fetchProject, ProjectAPI } from "../api/projectService";
 import "../styles/details-projet.scss";
-import { projectsData, ProjectDetailsProps } from "../data/projectsData";
 
-// Composant de la page de détails du projet
 export default function DetailsProjet() {
-  // Récupère l'ID du projet depuis l'URL
   const { projectId } = useParams<{ projectId: string }>();
+  const [project, setProject] = useState<ProjectAPI | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string>("");
 
-  // Recherche du projet correspondant dans le tableau de données
-  const project: ProjectDetailsProps | undefined = projectsData.find(
-    (proj) => proj.id === projectId
-  );
+  useEffect(() => {
+    if (!projectId) {
+      setError("Aucun identifiant de projet spécifié");
+      setLoading(false);
+      return;
+    }
 
-  // Affiche un message d'erreur si le projet n'est pas trouvé
-  if (!project) {
+    setLoading(true);
+    fetchProject(projectId)
+      .then((data) => {
+        if (data) setProject(data);
+        else setError("Projet non trouvé");
+      })
+      .catch((err) => {
+        console.error("Erreur API :", err);
+        setError("Erreur lors du chargement du projet");
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, [projectId]);
+
+  if (loading) {
     return (
       <div className="details-container">
-        <h2>Projet non trouvé</h2>
+        <p>Chargement…</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="details-container">
+        <h2>{error}</h2>
         <Link to="/projets" className="back-button">
           Retour aux projets
         </Link>
@@ -24,58 +52,62 @@ export default function DetailsProjet() {
     );
   }
 
+  // project est non-null ici
   return (
     <div className="details-container">
-      {/* Titre et bouton retour */}
+      {/* En‑tête avec titre et bouton retour */}
       <div className="header">
-        <h1>{project.title}</h1>
+        <h1>{project!.title}</h1>
         <Link to="/projets" className="back-button">
           <div className="back-circle">
-            <img src="/src/assets/back.png" alt="Retour" className="back-icon" />
+            <img
+              src="/src/assets/back.png"
+              alt="Retour"
+              className="back-icon"
+            />
           </div>
         </Link>
       </div>
 
-      {/* Image principale du projet */}
+      {/* Image principale */}
       <div className="image-container">
-        <img src={project.imageUrl} alt={project.title} />
+        <img src={project!.imageUrl} alt={project!.title} />
       </div>
 
-      {/* Bloc infos du projet */}
-      <div className="project-info">
-        <h3>Infos</h3>
-        <p><b>Date de création :</b> {project.date}</p>
-        <p><b>Difficulté :</b> {project.difficulty}</p>
-      </div>
-
-      {/* Description détaillée */}
+      {/* Description */}
       <div className="description">
         <h3>Description</h3>
-        <p>{project.description}</p>
+        <p>{project!.description}</p>
       </div>
 
-      {/* Galerie d’images si elle existe */}
-      {project.gallery && (
+      {/* Galerie d’images */}
+      {project!.galleryImages.length > 0 && (
         <div className="gallery">
           <h3>Galerie d’images</h3>
           <div className="gallery-grid">
-            {project.gallery.map((img, index) => (
-              <img key={index} src={img} alt={`Step ${index + 1}`} />
+            {project!.galleryImages.map((imgUrl, idx) => (
+              <img
+                key={idx}
+                src={imgUrl}
+                alt={`Galerie ${idx + 1}`}
+              />
             ))}
           </div>
         </div>
       )}
 
-      {/* Stack technique animé si présent */}
-      {project.techDetails && (
+      {/* Stack technique animé (flip‑cards) */}
+      {project!.stack.length > 0 && (
         <div className="stack-animated">
           <h3>Stack technique</h3>
           <div className="stack-grid">
-            {project.techDetails.map((tech, index) => (
-              <div key={index} className="flip-card">
+            {project!.stack.map((tech, idx) => (
+              <div key={tech._id ?? idx} className="flip-card">
                 <div className="flip-inner">
+                  {/* Face avant : nom de la techno */}
                   <div className="flip-front">{tech.name}</div>
-                  <div className="flip-back">{tech.role}</div>
+                  {/* Face arrière : description / usage */}
+                  <div className="flip-back">{tech.description}</div>
                 </div>
               </div>
             ))}
@@ -83,24 +115,20 @@ export default function DetailsProjet() {
         </div>
       )}
 
-      {/* Ce que tu as appris (retour d'expérience) */}
-      {project.learnings && (
-        <div className="learnings">
-          <h3>Ce que j’ai appris</h3>
-          <p>{project.learnings}</p>
-        </div>
-      )}
-
-      {/* Lien vers le dépôt GitHub si disponible */}
-      {project.githubLink && (
+      {/* Lien GitHub */}
+      {project!.githubLink && (
         <a
-          href={project.githubLink}
+          href={project!.githubLink}
           target="_blank"
           rel="noopener noreferrer"
           className="github-circle-link"
         >
           <div className="github-circle">
-            <img src="/src/assets/github.png" alt="GitHub" className="github-icon" />
+            <img
+              src="/src/assets/github.png"
+              alt="GitHub"
+              className="github-icon"
+            />
           </div>
         </a>
       )}

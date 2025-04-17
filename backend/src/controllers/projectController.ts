@@ -39,13 +39,20 @@ export const getProjectById: RequestHandler = async (req, res) => {
 // ----------------------------------------------------------------------
 export const createProject: RequestHandler = async (req, res) => {
   try {
-    const imageCardFile = req.file;
-    const galleryFiles = req.files as Express.Multer.File[];
+    const files = req.files as {
+      [fieldname: string]: Express.Multer.File[];
+    };
+    
+    const imageCardFile = files?.imageCard?.[0];
+    const galleryFiles = files?.galleryImages || [];
 
     if (!imageCardFile) {
-      res.status(400).json({ message: "L'image principale (imageCard) est obligatoire." });
-      return ;
+      res.status(400).json({ message: "L'image principale est requise." });
+      return;
     }
+
+    const imageCardBuffer = imageCardFile.buffer;
+    const galleryImagesBuffer = galleryFiles?.map((file) => file.buffer) || [];
 
     const {
       title,
@@ -57,7 +64,7 @@ export const createProject: RequestHandler = async (req, res) => {
       stack,
     } = req.body;
 
-    const parsedStack = typeof stack === "string" ? JSON.parse(stack) : stack;
+    const parsedStack = typeof stack === "string" ? JSON.parse(stack) : [];
     const parsedTechnologies = Array.isArray(technologies)
       ? technologies
       : technologies.split(",");
@@ -65,33 +72,24 @@ export const createProject: RequestHandler = async (req, res) => {
     const newProject = new Project({
       title,
       description,
-      technologies: parsedTechnologies.map((t: string) => t.trim()),
+      technologies: parsedTechnologies,
       githubLink,
       demoLink: demoLink || "",
-      imageCard: imageCardFile.buffer,
-      galleryImages: galleryFiles?.map((file) => file.buffer) || [],
+      imageCard: imageCardBuffer,
+      galleryImages: galleryImagesBuffer,
       whatILearned,
       stack: parsedStack,
     });
-    console.log("🧪 Données reçues :");
-    console.log("title:", title);
-    console.log("description:", description);
-    console.log("technologies:", technologies);
-    console.log("githubLink:", githubLink);
-    console.log("demoLink:", demoLink);
-    console.log("whatILearned:", whatILearned);
-    console.log("stack:", stack);
-    console.log("imageCard:", imageCardFile?.originalname);
-    console.log("galleryImages:", galleryFiles?.length);
 
     await newProject.save();
-
-    res.status(201).json(newProject);
+    res.status(201).json({ message: "Projet créé avec succès", newProject });
   } catch (error) {
-    console.error("Erreur création projet:", error);
-    res.status(400).json({ message: "Échec de la création du projet" });
+    console.error("Erreur création projet :", error);
+    res.status(400).json({ message: "Erreur lors de la création du projet" });
   }
 };
+
+
 
 // ----------------------------------------------------------------------
 // PUT /api/projects/:id → Modifier un projet existant

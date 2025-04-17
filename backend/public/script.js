@@ -1,6 +1,5 @@
 let isAdminConnected = false;
 
-// Connexion admin
 document.getElementById("adminLoginForm")?.addEventListener("submit", async function (e) {
   e.preventDefault();
   const email = document.getElementById("email").value;
@@ -31,43 +30,28 @@ document.getElementById("adminLoginForm")?.addEventListener("submit", async func
   }
 });
 
-// Blocage navigation si pas connecté
-["btn-ajouter", "btn-modifier", "btn-supprimer"].forEach((id) => {
-  document.getElementById(id)?.addEventListener("click", function (e) {
-    if (!isAdminConnected) {
-      e.preventDefault();
-      document.getElementById("admin-warning").style.display = "block";
-    } else {
-      document.getElementById("admin-warning").style.display = "none";
-    }
-  });
-});
 
-// Déconnexion
 document.getElementById("logoutBtn")?.addEventListener("click", () => {
   localStorage.removeItem("jwtToken");
   alert("Déconnexion réussie !");
   window.location.reload();
 });
 
-// Ajout de projet
+// 🔧 AJOUT PROJET
 const addForm = document.getElementById("addProjectForm");
+
 if (addForm) {
   addForm.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    if (!isAdminConnected) {
-      document.getElementById("admin-warning").style.display = "block";
-      return;
-    }
-
     const formData = new FormData(addForm);
+    const token = localStorage.getItem("jwtToken");
 
     try {
       const response = await fetch("/api/projects", {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+          Authorization: `Bearer ${token}`,
         },
         body: formData,
       });
@@ -81,12 +65,25 @@ if (addForm) {
         document.getElementById("addError").innerText = data.message || "❌ Échec de l’ajout.";
         document.getElementById("addError").style.display = "block";
       }
-    } catch (error) {
-      document.getElementById("addError").innerText = "❌ Erreur réseau ou serveur.";
+    } catch {
+      document.getElementById("addError").innerText = "❌ Erreur serveur.";
       document.getElementById("addError").style.display = "block";
     }
   });
 }
+
+
+// Blocage navigation si pas connecté
+["btn-ajouter", "btn-modifier", "btn-supprimer"].forEach((id) => {
+  document.getElementById(id)?.addEventListener("click", function (e) {
+    if (!isAdminConnected) {
+      e.preventDefault();
+      document.getElementById("admin-warning").style.display = "block";
+    } else {
+      document.getElementById("admin-warning").style.display = "none";
+    }
+  });
+});
 
 // Modification projet
 const editForm = document.getElementById("editProjectForm");
@@ -99,7 +96,7 @@ if (editForm) {
       title: this.title.value || undefined,
       description: this.description.value || undefined,
       githubLink: this.githubLink.value || undefined,
-      demoLink: this.demoLink?.value || "", // ✅ assure la présence même si vide
+      demoLink: this.demoLink?.value || "", 
       whatILearned: this.whatILearned.value || undefined,
       stack: this.stack.value ? JSON.parse(this.stack.value) : undefined,
     };
