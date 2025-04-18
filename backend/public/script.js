@@ -36,7 +36,7 @@ document.getElementById("adminLoginForm")?.addEventListener("submit", async func
   e.preventDefault();
   const email    = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-
+  updateNavDisplay();
   try {
     const response = await fetch("/api/admin/login", {
       method: "POST",
