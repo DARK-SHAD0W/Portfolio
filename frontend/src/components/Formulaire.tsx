@@ -59,35 +59,42 @@ export default function Formulaire() {
     // Réinitialise l'erreur globale lors de la modification d’un champ
     setGlobalError("");
   };
-
-  // Soumission du formulaire
-  const handleSubmit = (e: React.FormEvent) => {
+  
+  // Gère la soumission du formulaire
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const isEmpty = Object.values(formData).some((val) => val.trim() === "");
-    const hasErrors = Object.values(errors).some((err) => err !== "");
-
-    // Affiche un message global si des champs sont vides ou invalides
-    if (isEmpty || hasErrors) {
+  
+    // Validation locale identique …
+    const isEmpty  = Object.values(formData).some((val) => val.trim() === "");
+    const hasError = Object.values(errors).some((err) => err !== "");
+    if (isEmpty || hasError) {
       setGlobalError("Tous les champs sont obligatoires.");
       return;
     }
-
-    // Si tout est valide, envoie du formulaire simulé
-    setIsSubmitted(true);
-    setGlobalError("");
-
-    // Réinitialise après 6 secondes
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: "",
-        firstname: "",
-        email: "",
-        reason: "",
-        message: ""
+  
+    try {
+      // POST JSON vers le back
+      const response = await fetch("http://localhost:5000/api/messages", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
       });
-    }, 6000);
+  
+      if (!response.ok) {
+        const err = await response.json();
+        throw new Error(err.message || "Échec de l’envoi.");
+      }
+  
+      // Succès
+      setIsSubmitted(true);
+      setGlobalError("");
+      setFormData({ name: "", firstname: "", email: "", reason: "", message: "" });
+  
+      // Cache la confirmation au bout de 6 sec.
+      setTimeout(() => setIsSubmitted(false), 6000);
+    } catch (err: any) {
+      setGlobalError("❌ " + err.message);
+    }
   };
 
   return (

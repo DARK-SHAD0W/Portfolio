@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Messages Admin</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="navbar-wrapper">
+    <div class="icon-box">
+        <img src="backend.png" alt="Plus" />
+      </div>
+      <nav>
+        <!-- Nav publique (avant login) -->
+        <ul id="publicNav">
+          <li><a href="/">Accueil</a></li>
+        </ul>
+        <!-- Nav admin (après login) -->
+        <ul id="adminNav" style="display:none">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="#" id="logoutBtn" style="display:none">Déconnexion</a></li>
+          <li><a href="ajout.html">Ajouter</a></li>
+          <li><a href="edition.html">Modifier</a></li>
+          <li><a href="suppression.html">Supprimer</a></li>
+          <li><a href="messages.html">Messages</a></li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <h2>Messages reçus</h2>
+    <div id="messagesContainer" class="messages-container"></div>
+  </main>
+
+  <footer>© 2025 Portfolio Admin</footer>
+
+  <script src="script.js"></script>
+  <script src="messages.js"></script>
+</body>
+</html>

@@ -13,7 +13,9 @@ import path from "path";
 import staticRoutes from "./routes/staticRoutes";
 import projectRoutes from "./routes/projectRoutes"; 
 import authRoutes from "./routes/authRoutes";
-import cvRoutes from "./routes/cvRoutes"; // Import de la route pour le CV
+import cvRoutes from "./routes/cvRoutes"; 
+import messageRoutes from './routes/messageRoutes';
+
 // -----------------------------------------------------
 // Chargement des variables d'environnement
 // -----------------------------------------------------
@@ -55,6 +57,12 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin", authRoutes); // 
 
 
+
+// Monte la nouvelle route messages sous /api/messages
+app.use('/api/messages', messageRoutes);
+
+// Montages existants (projects, cv, auth…) suivent
+app.use('/api/projects', projectRoutes);
 
 // -----------------------------------------------------
 // Exportation de l'application Express

@@ -11,13 +11,21 @@
       <img src="backend.png" alt="Plus" />
     </div>
     <nav>
-      <ul>
+      <!-- Nav publique (avant login) -->
+      <ul id="publicNav">
         <li><a href="/">Accueil</a></li>
-        <li><a href="/ajout.html">Ajouter</a></li>
-        <li><a href="/edition.html">Modifier</a></li>
-        <li><a href="/suppression.html">Supprimer</a></li>
+      </ul>
+      <!-- Nav admin (après login) -->
+      <ul id="adminNav" style="display:none">
+        <li><a href="/">Accueil</a></li>
+        <li><a href="#" id="logoutBtn" style="display:none">Déconnexion</a></li>
+        <li><a href="ajout.html">Ajouter</a></li>
+        <li><a href="edition.html">Modifier</a></li>
+        <li><a href="suppression.html">Supprimer</a></li>
+        <li><a href="messages.html">Messages</a></li>
       </ul>
     </nav>
+    
   </div>
 
   <main>

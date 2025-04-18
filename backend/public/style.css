@@ -135,7 +135,7 @@ nav li a {
 }
 
 nav li a:hover {
-  background-color: hsl(353, 52%, 25%);
+  background-color: hsl(0, 0%, 40%);
   transform: translateY(-2px);
 }
 
@@ -165,4 +165,271 @@ form textarea {
 form textarea {
   min-height: 90px;
   resize: vertical;
+}
+
+/* -------------------------------------------------------------------
+   Cartes 3D pour la page Messages (flip centré, faces pleines)
+------------------------------------------------------------------- */
+
+/* GRID LAYOUT — inchangé */
+.messages-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+  animation: fadeIn 1.2s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reset box-model pour tout ce qui touche au flip */
+.message-card,
+.message-inner,
+.message-front,
+.message-back {
+  box-sizing: border-box;
+}
+
+/* LA CARTE — perspective + scale */
+.message-card {
+  position: relative;           /* pour faces absolues */
+  width: 300px;
+  min-height: 200px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  perspective: 1000px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1;
+}
+.message-card:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+/* CONTENEUR FLIP — plein parent, absolu */
+.message-inner {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  transform-origin: center center;
+}
+.message-card:hover .message-inner {
+  transform: rotateY(180deg);
+}
+
+/* FACES superposées, même taille que la carte */
+.message-front,
+.message-back {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  backface-visibility: hidden;
+  border-radius: 20px;
+  padding: 20px;                /* marge interne */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-wrap: break-word;
+}
+
+/* FACE AVANT */
+.message-front {
+  background: #fff;
+}
+.message-front h3 {
+  margin: 0 0 0.5rem;
+  color: hsl(353,52%,25%);
+  font-size: 1.4rem;
+}
+.message-front em {
+  color: hsl(209,34%,25%);
+  font-style: normal;
+}
+.message-front p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+/* FACE ARRIÈRE — pivotée + scroll si trop long */
+.message-back {
+  background: #f0f0f0;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  overflow: auto;               /* scroll si contenu dépasse */
+}
+.message-back small {
+  display: block;
+  margin-top: 1rem;
+  color: hsl(210,49%,45%);
+  font-size: 0.8rem;
+}
+
+/* OMBRES ALÉATOIRES au hover (5 couleurs) */
+.message-card:nth-child(5n+1):hover {
+  box-shadow: 0 8px 16px rgba(7,131,7);
+}
+.message-card:nth-child(5n+2):hover {
+  box-shadow: 0 8px 16px rgba(125,127,9);
+}
+.message-card:nth-child(5n+3):hover {
+  box-shadow: 0 8px 16px rgba(18,131,183);
+}
+.message-card:nth-child(5n+4):hover {
+  box-shadow: 0 8px 16px rgba(187,22,85);
+}
+.message-card:nth-child(5n+5):hover {
+  box-shadow: 0 8px 16px rgba(132,6,6);
+}
+
+/* RESPONSIVE — une colonne sur mobile */
+@media (max-width: 768px) {
+  .messages-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------
+   NAVBAR RESPONSIVE (calqué sur le front-end)
+------------------------------------------------------------------- */
+
+/* Wrapper général de la navbar (structure horizontale)*/
+.navbar-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Bloc de l'icône*/
+.icon-box {
+  background: hsl(0, 0%,40%);  
+  padding: 8px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 10px hsla(0, 0%, 0%, 0.75);
+
+  img {
+    width: 55px;
+    height: 55px;
+  }
+}
+
+/*Bloc principal de la navbar (fond, espacement et forme)*/
+nav {
+  background: hsl(0, 0%,40%);  
+  padding: 12px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  flex-grow: 1;
+  box-shadow: 0 8px 10px hsla(0, 0%, 0%, 0.75);
+
+  ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 8px;
+
+      a {
+        text-decoration: none;
+        color: hsl(0, 0%, 0%); 
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px 20px;
+        background-color: hsl(0, 0%, 40%);
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    color 0.3s ease;
+
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+          color: hsl(353, 52%, 25%); 
+        }
+
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+  }
+
+  /* ===== Tablettes (≤768px) ===== */
+  @media (max-width: 768px) {
+    ul {
+      gap: 15px;
+    }
+    li {
+      margin-bottom: 5px;
+      a {
+        font-size: 16px;
+        padding: 8px 16px;
+      }
+    }
+    .icon-box {
+      padding: 6px;
+      margin-right: 5px;
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  }
+
+  /* ===== Mobiles (≤480px) ===== */
+  @media (max-width: 480px) {
+    .navbar-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    li {
+      margin-bottom: 8px;
+      a {
+        font-size: 14px;
+        padding: 6px 12px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    .icon-box {
+      padding: 5px;
+      margin-right: 0;
+      img {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
 }
